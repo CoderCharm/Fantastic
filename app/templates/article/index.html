@@ -1,380 +1,894 @@
-
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>拴蛋头条</title>
-    <link rel="stylesheet" href="{{ url_for("static", filename='css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{ url_for("static", filename='css/main.css')}}">
+
+    <title>
+
+         二十次幂 
+
+    </title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/common.css')}}">
+
+
+    
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css')}}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/author.css')}}">
+
+
 </head>
 
 <body>
-<div class="navbar navbar-default">
-    <div class="container">
-        <div class="navbar-header">
-            <a href="index.html" class="navbar-brand">
-            </a>
+
+
+<div class="header">
+    <div class="middlebar">
+        <div class="middlebar-inner clearfix">
+            <div class="bui-left logo-box">
+                <a href="/" class="logo-link">
+                    <img src="../static/images/ershicimi.png" class="logo">
+                </a>
+            </div>
+            <div class="search-wrapper fr">
+                <input type="text" placeholder="搜索公众号" autocomplete="off" class="search-inner"
+                       value=""/>
+                <div class="search-btn">
+                    <button type="button">
+                        <span>搜索</span>
+                    </button>
+                </div>
+            </div>
         </div>
-        <ul class="nav navbar-nav">
-            <li><a href="#">热闻 ⋅ 拴蛋头条</a></li>
-            <li><a href="#">国内</a></li>
-            <li><a href="#">国际</a></li>
-            <li><a href="#">社会</a></li>
-            <li><a href="#">数读</a></li>
-            <li><a href="#">军事</a></li>
-            <li><a href="#">政务</a></li>
-            <li><a href="#">公益</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="../login.html">登录</a></li>
-            <li><a href="../signup.html">注册</a></li>
-        </ul>
     </div>
 </div>
-<div class="container">
-    <div class="col-sm-2">
-        <div class="list-group side-bar">
-            <a class="list-group-item active" href="#">全部</a>
-            <a class="list-group-item" href="#">电影</a>
-            <a class="list-group-item" href="#">电视剧</a>
-            <a class="list-group-item" href="#">明星</a>
-            <a class="list-group-item" href="#">八卦</a>
-            <a class="list-group-item" href="#">音乐</a>
-            <a class="list-group-item" href="#">演员</a>
-            <a class="list-group-item" href="#">歌手</a>
+
+<!--<div class="bgcolor">-->
+    <div id="wrapper">
+        
+
+    <div class="y-wrap">
+
+        
+            
+        
+
+        <div class="y-box container clearfix">
+            <div class="wrapper y-left clearfix">
+                <!-- 分类栏 -->
+                <div class="y-left index-channel">
+    <div>
+        <div class="wchannel">
+
+            <ul>
+
+                <li>
+                    <a class="wchannel-item  active " href="/">
+                        <span>推荐</span>
+                    </a>
+                </li>
+
+                
+                    <li>
+                        <a class="wchannel-item "
+                           href="/c/keji">
+                            <span>科技</span>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="wchannel-item "
+                           href="/c/biancheng">
+                            <span>编程</span>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="wchannel-item "
+                           href="/c/zixun">
+                            <span>资讯</span>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="wchannel-item "
+                           href="/c/caijing">
+                            <span>财经</span>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="wchannel-item "
+                           href="/c/yule">
+                            <span>娱乐</span>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="wchannel-item "
+                           href="/c/meishi">
+                            <span>美食</span>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="wchannel-item "
+                           href="/c/tiyu">
+                            <span>体育</span>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="wchannel-item "
+                           href="/c/youxi">
+                            <span>游戏</span>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="wchannel-item "
+                           href="/c/qiche">
+                            <span>汽车</span>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a class="wchannel-item "
+                           href="/c/yuer">
+                            <span>育儿</span>
+                        </a>
+                    </li>
+                
+                <li class="wchannel-more">
+                    <a href="javascript:void(0);" class="wchannel-item"><span>更多</span></a>
+                    <div class="wchannel-more-layer">
+                        <ul>
+
+                            
+                                <li>
+                                    <a class="y-left wchannel-item "
+                                       href="/c/zhichang">
+                                        <span>职场</span>
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a class="y-left wchannel-item "
+                                       href="/c/qinggan">
+                                        <span>情感</span>
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a class="y-left wchannel-item "
+                                       href="/c/lvyou">
+                                        <span>旅游</span>
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a class="y-left wchannel-item "
+                                       href="/c/fangchan">
+                                        <span>房产</span>
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a class="y-left wchannel-item "
+                                       href="/c/jiankang">
+                                        <span>健康</span>
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a class="y-left wchannel-item "
+                                       href="/c/sheying">
+                                        <span>摄影</span>
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a class="y-left wchannel-item "
+                                       href="/c/yiliao">
+                                        <span>医疗</span>
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a class="y-left wchannel-item "
+                                       href="/c/jiaoyu">
+                                        <span>教育</span>
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <a class="y-left wchannel-item "
+                                       href="/c/lishi">
+                                        <span>历史</span>
+                                    </a>
+                                </li>
+                            
+                        </ul>
+                    </div>
+                </li>
+
+            </ul>
         </div>
-    </div>
-    <div class="col-sm-7">
-        <div class="post-list">
-            <div class="post-list-item">
-                <div class="col-xs-5">
-                    <img class="post-object" src="img/003.jpg">
-                </div>
-                <div class="col-xs-7">
-                    <a href="../news.html">
-                        <div class="post-heading">某著名表姓老师，因美貌如花被潜规则，目前其学生情绪稳定</div>
-                    </a>
-                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur aut doloribus optio
-                        eligendi id expedita recusandae...</p> -->
-                    <p class="text-muted">
-                        <span>
-{#                            <img class="avatar" src="img/004.jpg">#}
-                            <img class="avatar" src="{{ url_for("static", filename='img/004.jpg')}}">
-                        王花花
-                        </span> ⋅
-                        <span>
-                        369评论
-                        </span> ⋅
-                        <span>
-                        7分钟前
-                        </span>
-                    </p>
-                </div>
-            </div>
-            <div class="post-list-item">
-                <div class="col-xs-5">
-                    <img class="post-object" src="img/002.jpg">
-                </div>
-                <div class="col-xs-7">
-                    <a href="../news.html">
-                        <div class="post-heading">2年前他为教育事业和高圆圆分手，今成这般，高圆圆：我有一句MMP如鲠在喉</div>
-                    </a>
-                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur aut doloribus optio
-                        eligendi id expedita recusandae...</p> -->
-                    <p class="text-muted">
-                        <span>
-                            <img class="avatar" src="img/004.jpg">
-                        逆麻羊
-                        </span> ⋅
-                        <span>
-                        369评论
-                        </span> ⋅
-                        <span>
-                        7分钟前
-                        </span>
-                    </p>
-                </div>
-            </div>
-            <div class="post-list-item">
-                <div class="col-xs-5">
-                    <img class="post-object" src="img/005.jpg">
-                </div>
-                <div class="col-xs-7">
-                    <a href="../news.html">
-                        <div class="post-heading">范冰冰为了他，三次拒绝李晨求婚，王花花对她恨之入骨！</div>
-                    </a>
-                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur aut doloribus optio
-                        eligendi id expedita recusandae...</p> -->
-                    <p class="text-muted">
-                        <span>
-                            <img class="avatar" src="img/004.jpg">
-                        马拴蛋
-                        </span> ⋅
-                        <span>
-                        369评论
-                        </span> ⋅
-                        <span>
-                        7分钟前
-                        </span>
-                    </p>
-                </div>
-            </div>
-            <div class="post-list-item">
-                <div class="col-xs-5">
-                    <img class="post-object" src="img/003.jpg">
-                </div>
-                <div class="col-xs-7">
-                    <a href="../news.html">
-                        <div class="post-heading">某著名表姓老师，因美貌如花被潜规则，目前其学生情绪稳定</div>
-                    </a>
-                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur aut doloribus optio
-                        eligendi id expedita recusandae...</p> -->
-                    <p class="text-muted">
-                        <span>
-                            <img class="avatar" src="img/004.jpg">
-                        王花花
-                        </span> ⋅
-                        <span>
-                        369评论
-                        </span> ⋅
-                        <span>
-                        7分钟前
-                        </span>
-                    </p>
-                </div>
-            </div>
-            <div class="post-list-item">
-                <div class="col-xs-5">
-                    <img class="post-object" src="img/002.jpg">
-                </div>
-                <div class="col-xs-7">
-                    <a href="../news.html">
-                        <div class="post-heading">2年前他为教育事业和高圆圆分手，今成这般，高圆圆：我有一句MMP如鲠在喉</div>
-                    </a>
-                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur aut doloribus optio
-                        eligendi id expedita recusandae...</p> -->
-                    <p class="text-muted">
-                        <span>
-                            <img class="avatar" src="img/004.jpg">
-                        逆麻羊
-                        </span> ⋅
-                        <span>
-                        369评论
-                        </span> ⋅
-                        <span>
-                        7分钟前
-                        </span>
-                    </p>
-                </div>
-            </div>
-            <div class="post-list-item">
-                <div class="col-xs-5">
-                    <img class="post-object" src="img/005.jpg">
-                </div>
-                <div class="col-xs-7">
-                    <a href="../news.html">
-                        <div class="post-heading">范冰冰为了他，三次拒绝李晨求婚，王花花对她恨之入骨！</div>
-                    </a>
-                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur aut doloribus optio
-                        eligendi id expedita recusandae...</p> -->
-                    <p class="text-muted">
-                        <span>
-                            <img class="avatar" src="img/004.jpg">
-                        马拴蛋
-                        </span> ⋅
-                        <span>
-                        369评论
-                        </span> ⋅
-                        <span>
-                        7分钟前
-                        </span>
-                    </p>
-                </div>
-            </div>
-            <div class="post-list-item">
-                <div class="col-xs-5">
-                    <img class="post-object" src="img/003.jpg">
-                </div>
-                <div class="col-xs-7">
-                    <a href="../news.html">
-                        <div class="post-heading">某著名表姓老师，因美貌如花被潜规则，目前其学生情绪稳定</div>
-                    </a>
-                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur aut doloribus optio
-                        eligendi id expedita recusandae...</p> -->
-                    <p class="text-muted">
-                        <span>
-                            <img class="avatar" src="img/004.jpg">
-                        王花花
-                        </span> ⋅
-                        <span>
-                        369评论
-                        </span> ⋅
-                        <span>
-                        7分钟前
-                        </span>
-                    </p>
-                </div>
-            </div>
-            <div class="post-list-item">
-                <div class="col-xs-5">
-                    <img class="post-object" src="img/002.jpg">
-                </div>
-                <div class="col-xs-7">
-                    <a href="../news.html">
-                        <div class="post-heading">2年前他为教育事业和高圆圆分手，今成这般，高圆圆：我有一句MMP如鲠在喉</div>
-                    </a>
-                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur aut doloribus optio
-                        eligendi id expedita recusandae...</p> -->
-                    <p class="text-muted">
-                        <span>
-                            <img class="avatar" src="img/004.jpg">
-                        逆麻羊
-                        </span> ⋅
-                        <span>
-                        369评论
-                        </span> ⋅
-                        <span>
-                        7分钟前
-                        </span>
-                    </p>
-                </div>
-            </div>
-            <div class="post-list-item">
-                <div class="col-xs-5">
-                    <img class="post-object" src="img/005.jpg">
-                </div>
-                <div class="col-xs-7">
-                    <a href="../news.html">
-                        <div class="post-heading">范冰冰为了他，三次拒绝李晨求婚，王花花对她恨之入骨！</div>
-                    </a>
-                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur aut doloribus optio
-                        eligendi id expedita recusandae...</p> -->
-                    <p class="text-muted">
-                        <span>
-                            <img class="avatar" src="img/004.jpg">
-                        马拴蛋
-                        </span> ⋅
-                        <span>
-                        369评论
-                        </span> ⋅
-                        <span>
-                        7分钟前
-                        </span>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-3">
-      <div class="form-group">
-        <input type="search" class="form-control" placeholder="搜索资讯">
-      </div>
-      <div class="side-bar-well clearfix">
-        <div class="col-sm-5"><img src="img/1-1.png"></div>
-        <div class="col-sm-7">
-          <p class="side-bar-well-title">
-            网上有害信息举报专区
-          </p>
-          <p>举报电话：12377</p>
-        </div>
-      </div>
-      <div class="side-bar-well">
-        <strong class="side-bar-well-title">
-          24小时热闻
-        </strong>
-        <a href="#" class="news-item">
-          <div class="news-title">Consectetur adipisicing elit. Consequuntur aut </div>
-          <div class="news-info">
-              5.9万次播放  ⋅ 167评论
-          </div>
-        </a>
-        <a href="#" class="news-item">
-          <div class="news-title">Lorem adipisicing elit. Consequuntur aut </div>
-          <div class="news-info">
-              8.9万次播放  ⋅ 3367评论
-          </div>
-        </a>
-        <a href="#" class="news-item">
-          <div class="news-title">Consectetur adipisicing elit. Consequuntur aut </div>
-          <div class="news-info">
-              5.9万次播放  ⋅ 167评论
-          </div>
-        </a>
-        <a href="#" class="news-item">
-          <div class="news-title">Lorem adipisicing elit. Consequuntur aut </div>
-          <div class="news-info">
-              8.9万次播放  ⋅ 3367评论
-          </div>
-        </a>
-        <a href="#" class="news-item">
-          <div class="news-title">Consectetur adipisicing elit. Consequuntur aut </div>
-          <div class="news-info">
-              5.9万次播放  ⋅ 167评论
-          </div>
-        </a>
-        <a href="#" class="news-item">
-          <div class="news-title">Lorem adipisicing elit. Consequuntur aut </div>
-          <div class="news-info">
-              8.9万次播放  ⋅ 3367评论
-          </div>
-        </a>
-        <a href="#" class="news-item">
-          <div class="news-title">Consectetur adipisicing elit. Consequuntur aut </div>
-          <div class="news-info">
-              5.9万次播放  ⋅ 167评论
-          </div>
-        </a>
-        <a href="#" class="news-item">
-          <div class="news-title">Lorem adipisicing elit. Consequuntur aut </div>
-          <div class="news-info">
-              8.9万次播放  ⋅ 3367评论
-          </div>
-        </a>
-        <a href="#" class="news-item">
-          <div class="news-title">Consectetur adipisicing elit. Consequuntur aut </div>
-          <div class="news-info">
-              5.9万次播放  ⋅ 167评论
-          </div>
-        </a>
-        <a href="#" class="news-item">
-          <div class="news-title">Lorem adipisicing elit. Consequuntur aut </div>
-          <div class="news-info">
-              8.9万次播放  ⋅ 3367评论
-          </div>
-        </a>
-        <a href="#" class="news-item">
-          <div class="news-title">Consectetur adipisicing elit. Consequuntur aut </div>
-          <div class="news-info">
-              5.9万次播放  ⋅ 167评论
-          </div>
-        </a>
-        <a href="#" class="news-item">
-          <div class="news-title">Lorem adipisicing elit. Consequuntur aut </div>
-          <div class="news-info">
-              8.9万次播放  ⋅ 3367评论
-          </div>
-        </a>
-        <a href="#" class="news-item">
-          <div class="news-title">Consectetur adipisicing elit. Consequuntur aut </div>
-          <div class="news-info">
-              5.9万次播放  ⋅ 167评论
-          </div>
-        </a>
-        <a href="#" class="news-item">
-          <div class="news-title">Lorem adipisicing elit. Consequuntur aut </div>
-          <div class="news-info">
-              8.9万次播放  ⋅ 3367评论
-          </div>
-        </a>
-      </div>
     </div>
 </div>
+                <!-- 主体内容 -->
+                <div class="y-left index-content news-box">
+    <ul class="news-list">
+
+        
+        <li>
+            <div class="img-box">
+                <a href="/p/b94bad64448ab9d923ef4647d66bbce5" target="_blank">
+                    <img src="http://duweixin.oss-cn-beijing.aliyuncs.com/93fdd0a44b6f4d00b55f8d9e22b2d300e2762b61.jpg?x-oss-process=image/resize,p_35" style="height: 100px; width: auto; margin-left: -61.5px;">
+                </a>
+            </div>
+            <div class="txt-box">
+                <h3>
+                    <a href="/p/b94bad64448ab9d923ef4647d66bbce5" target="_blank">摄影技能的提升和启发</a>
+                </h3>
+                <p class="txt-info" target="_blank">
+                    如何在短时间内快速提升某项技能？</p>
+                <div class="s-p">
+                    <a class="account" href="/a/96" target="_blank">辉哥奇谭</a>
+                    <span class="s2">1小时前</span>
+                    <div class="moe-box">
+                        <span class="sc" style="display: none;">
+                            <a href="javascript:void(0);" class="sc-a"></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        
+        <li>
+            <div class="img-box">
+                <a href="/p/820fccb08f8964ba18ae74e42a054d1f" target="_blank">
+                    <img src="http://duweixin.oss-cn-beijing.aliyuncs.com/b3c068352dee1463724aa67c794a2017a81fe2ca.jpg?x-oss-process=image/resize,p_35" style="height: 100px; width: auto; margin-left: -61.5px;">
+                </a>
+            </div>
+            <div class="txt-box">
+                <h3>
+                    <a href="/p/820fccb08f8964ba18ae74e42a054d1f" target="_blank">删了</a>
+                </h3>
+                <p class="txt-info" target="_blank">
+                    晚宴上。我跟每个人喝了一杯酒。发自内心的赞美了对方一句……我这也是感恩。大家为什么来海南骑车？不管见到懂懂是</p>
+                <div class="s-p">
+                    <a class="account" href="/a/2478" target="_blank">懂懂日记</a>
+                    <span class="s2">9小时前</span>
+                    <div class="moe-box">
+                        <span class="sc" style="display: none;">
+                            <a href="javascript:void(0);" class="sc-a"></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        
+        <li>
+            <div class="img-box">
+                <a href="/p/291d264d8867e59b51454c9c3ab96f7a" target="_blank">
+                    <img src="http://duweixin.oss-cn-beijing.aliyuncs.com/205109624370938014c1b295f0e6d05a7f17da0f.jpg?x-oss-process=image/resize,p_35" style="height: 100px; width: auto; margin-left: -61.5px;">
+                </a>
+            </div>
+            <div class="txt-box">
+                <h3>
+                    <a href="/p/291d264d8867e59b51454c9c3ab96f7a" target="_blank">读书的目的是什么？这个中国妈妈说完大家震惊了……</a>
+                </h3>
+                <p class="txt-info" target="_blank">
+                    当我谈教育，到底在谈些什么？</p>
+                <div class="s-p">
+                    <a class="account" href="/a/802" target="_blank">加拿大和美国必读</a>
+                    <span class="s2">9小时前</span>
+                    <div class="moe-box">
+                        <span class="sc" style="display: none;">
+                            <a href="javascript:void(0);" class="sc-a"></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        
+        <li>
+            <div class="img-box">
+                <a href="/p/0d7e43e294018b8351ec2665bd63f297" target="_blank">
+                    <img src="http://duweixin.oss-cn-beijing.aliyuncs.com/bbdf39e9711945cf24f9eb0f03c00e3813e55ef7.jpg?x-oss-process=image/resize,p_35" style="height: 100px; width: auto; margin-left: -61.5px;">
+                </a>
+            </div>
+            <div class="txt-box">
+                <h3>
+                    <a href="/p/0d7e43e294018b8351ec2665bd63f297" target="_blank">坑了全国70万考生的公司，是如何垄断全国报考的？</a>
+                </h3>
+                <p class="txt-info" target="_blank">
+                    “ 如果这件事没有结果，我就转行当个记者。 ”</p>
+                <div class="s-p">
+                    <a class="account" href="/a/202" target="_blank">差评</a>
+                    <span class="s2">9小时前</span>
+                    <div class="moe-box">
+                        <span class="sc" style="display: none;">
+                            <a href="javascript:void(0);" class="sc-a"></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        
+        <li>
+            <div class="img-box">
+                <a href="/p/30b9263b1d65c6703177c94fa4554d64" target="_blank">
+                    <img src="http://duweixin.oss-cn-beijing.aliyuncs.com/5b69831c7e021103c5e9318e5b573a26daf72892.jpg?x-oss-process=image/resize,p_35" style="height: 100px; width: auto; margin-left: -61.5px;">
+                </a>
+            </div>
+            <div class="txt-box">
+                <h3>
+                    <a href="/p/30b9263b1d65c6703177c94fa4554d64" target="_blank">施虐，裹脚，性侵......罪行累累的女德班，正在摧毁我们的下一代</a>
+                </h3>
+                <p class="txt-info" target="_blank">
+                    被伪国学洗脑的中国人：道德分男女，性别论尊卑。</p>
+                <div class="s-p">
+                    <a class="account" href="/a/2405" target="_blank">今夜九零后</a>
+                    <span class="s2">9小时前</span>
+                    <div class="moe-box">
+                        <span class="sc" style="display: none;">
+                            <a href="javascript:void(0);" class="sc-a"></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        
+        <li>
+            <div class="img-box">
+                <a href="/p/e45dedb58e0c8e1b26463ae45c8ff76b" target="_blank">
+                    <img src="http://duweixin.oss-cn-beijing.aliyuncs.com/7cbf2f58f1e1edf226f73517c00ce9073fc2ab3a.jpg?x-oss-process=image/resize,p_35" style="height: 100px; width: auto; margin-left: -61.5px;">
+                </a>
+            </div>
+            <div class="txt-box">
+                <h3>
+                    <a href="/p/e45dedb58e0c8e1b26463ae45c8ff76b" target="_blank">cloudera第7天</a>
+                </h3>
+                <p class="txt-info" target="_blank">
+                    Cloudera实时初学者教程</p>
+                <div class="s-p">
+                    <a class="account" href="/a/2389" target="_blank">AI大数据与机器学习</a>
+                    <span class="s2">10小时前</span>
+                    <div class="moe-box">
+                        <span class="sc" style="display: none;">
+                            <a href="javascript:void(0);" class="sc-a"></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        
+        <li>
+            <div class="img-box">
+                <a href="/p/fdcc9a7a7034c90babfeaab9536cbb00" target="_blank">
+                    <img src="http://duweixin.oss-cn-beijing.aliyuncs.com/ab338ddb701eee22e4830aa1a9efa880bcca41b1.jpg?x-oss-process=image/resize,p_35" style="height: 100px; width: auto; margin-left: -61.5px;">
+                </a>
+            </div>
+            <div class="txt-box">
+                <h3>
+                    <a href="/p/fdcc9a7a7034c90babfeaab9536cbb00" target="_blank">重磅！科创板上市标准曝光</a>
+                </h3>
+                <p class="txt-info" target="_blank">
+                    退市长油明天重新上市</p>
+                <div class="s-p">
+                    <a class="account" href="/a/9" target="_blank">趋势交易的奶爸</a>
+                    <span class="s2">10小时前</span>
+                    <div class="moe-box">
+                        <span class="sc" style="display: none;">
+                            <a href="javascript:void(0);" class="sc-a"></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        
+        <li>
+            <div class="img-box">
+                <a href="/p/1601e35d19d4248d400c6499fc5d0b62" target="_blank">
+                    <img src="http://duweixin.oss-cn-beijing.aliyuncs.com/f08e1b78f2fba4a266b3c70a3fcbaab6875b56d4.jpg?x-oss-process=image/resize,p_35" style="height: 100px; width: auto; margin-left: -61.5px;">
+                </a>
+            </div>
+            <div class="txt-box">
+                <h3>
+                    <a href="/p/1601e35d19d4248d400c6499fc5d0b62" target="_blank">对你，我总是笨拙的。</a>
+                </h3>
+                <p class="txt-info" target="_blank">
+                    </p>
+                <div class="s-p">
+                    <a class="account" href="/a/2511" target="_blank">不会画出版社</a>
+                    <span class="s2">10小时前</span>
+                    <div class="moe-box">
+                        <span class="sc" style="display: none;">
+                            <a href="javascript:void(0);" class="sc-a"></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        
+        <li>
+            <div class="img-box">
+                <a href="/p/10fcd58f61a5b85beb7f89236937e595" target="_blank">
+                    <img src="http://duweixin.oss-cn-beijing.aliyuncs.com/146f83a8dd48462487fd49d0076b2e2e263f705a.jpg?x-oss-process=image/resize,p_35" style="height: 100px; width: auto; margin-left: -61.5px;">
+                </a>
+            </div>
+            <div class="txt-box">
+                <h3>
+                    <a href="/p/10fcd58f61a5b85beb7f89236937e595" target="_blank">对不起，赵丽颖新剧我实在夸不出口</a>
+                </h3>
+                <p class="txt-info" target="_blank">
+                    知否知否，很想锤爆男主的猪头</p>
+                <div class="s-p">
+                    <a class="account" href="/a/187" target="_blank">独立鱼电影</a>
+                    <span class="s2">10小时前</span>
+                    <div class="moe-box">
+                        <span class="sc" style="display: none;">
+                            <a href="javascript:void(0);" class="sc-a"></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        
+        <li>
+            <div class="img-box">
+                <a href="/p/601c9c2536d09f604407f01bde9c3260" target="_blank">
+                    <img src="http://duweixin.oss-cn-beijing.aliyuncs.com/1fb1137c52f8dc58a03ce87aaa32f98255ba6076.jpg?x-oss-process=image/resize,p_35" style="height: 100px; width: auto; margin-left: -61.5px;">
+                </a>
+            </div>
+            <div class="txt-box">
+                <h3>
+                    <a href="/p/601c9c2536d09f604407f01bde9c3260" target="_blank">汽车大地震！今天，上海打响第一枪！</a>
+                </h3>
+                <p class="txt-info" target="_blank">
+                    如题。</p>
+                <div class="s-p">
+                    <a class="account" href="/a/750" target="_blank">财经要参</a>
+                    <span class="s2">11小时前</span>
+                    <div class="moe-box">
+                        <span class="sc" style="display: none;">
+                            <a href="javascript:void(0);" class="sc-a"></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        
+
+
+    </ul>
+    <div class="loading ball-pulse" style="display:">
+        <div></div>
+        <div></div>
+        <div></div>
+        <span>加载中⋅⋅⋅</span>
+    </div>
+</div>
+
+            </div>
+            <!-- 侧边栏 -->
+            <div class="y-right index-modules snb-right">
+
+     <div class="author-recommend">
+        <div class="author-recommend-head">
+            <h2 class="author-recommend-name">二十次幂</h2>
+        </div>
+        <div class="author-recommend-list">
+            <a style="color: #8590A6" href="/about" target="_blank">二十次幂是一个帮你发现内容的地方</a>
+        </div>
+    </div>
+
+     <div class="author-recommend">
+        <div class="author-recommend-head">
+            <h2 class="author-recommend-name">编辑精选</h2>
+        </div>
+        <div class="author-recommend-list">
+
+             <ul class="news-list-right">
+            
+            <li>
+                <div class="img-box">
+                    <a target="_blank" href="/p/9c73d9d6257f6ebb5e1d0602062ec7a5">
+                        <img src="http://duweixin.oss-cn-beijing.aliyuncs.com/6b9a5d17db52a0003eafea977b247d0061627ac0.jpg?x-oss-process=image/resize,p_35" width="80" height="60">
+                    </a>
+                </div>
+                <div class="txt-box">
+                    <p class="p1">
+                        <a href="/p/9c73d9d6257f6ebb5e1d0602062ec7a5" target="_blank" title="现场：华为震撼发布新一代芯片鲲鹏，将成麒麟后另一关键自有技术生态">现场：华为震撼发布新一代芯片鲲鹏，将成麒麟后另一关键自有技术生态</a>
+                    </p>
+                    <p class="p2">
+                        <a href="/a/200" target="_blank" title="DeepTech深科技">DeepTech深科技</a>
+                        <span>01月07日</span>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="img-box">
+                    <a target="_blank" href="/p/57200269a69c2ee752bd9aafbc814c39">
+                        <img src="http://duweixin.oss-cn-beijing.aliyuncs.com/5df5ecc5f1130d426e8642ee92a39f73e671831e.jpg?x-oss-process=image/resize,p_35" width="80" height="60">
+                    </a>
+                </div>
+                <div class="txt-box">
+                    <p class="p1">
+                        <a href="/p/57200269a69c2ee752bd9aafbc814c39" target="_blank" title="终于！权健老板被刑拘！何止保健品专坑老年人，参股多家A股公司，投资从房地产、银行到足球俱乐部">终于！权健老板被刑拘！何止保健品专坑老年人，参股多家A股公司，投资从房地产、银行到足球俱乐部</a>
+                    </p>
+                    <p class="p2">
+                        <a href="/a/754" target="_blank" title="券商中国">券商中国</a>
+                        <span>01月07日</span>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="img-box">
+                    <a target="_blank" href="/p/83edef4c3e5bebaeda20db2745b6e733">
+                        <img src="http://duweixin.oss-cn-beijing.aliyuncs.com/386314f600ae87dd6342f9f363fc85e10e8e3c47.jpg?x-oss-process=image/resize,p_35" width="80" height="60">
+                    </a>
+                </div>
+                <div class="txt-box">
+                    <p class="p1">
+                        <a href="/p/83edef4c3e5bebaeda20db2745b6e733" target="_blank" title="知识付费是骗人的吗？">知识付费是骗人的吗？</a>
+                    </p>
+                    <p class="p2">
+                        <a href="/a/25" target="_blank" title="纯洁的微笑">纯洁的微笑</a>
+                        <span>01月07日</span>
+                    </p>
+                </div>
+            </li>
+            
+            <li>
+                <div class="img-box">
+                    <a target="_blank" href="/p/ab8b536bb9ff60e3d8909b073893e507">
+                        <img src="http://duweixin.oss-cn-beijing.aliyuncs.com/1a1608965613a2322dd59a78d484732b9083fbc5.jpg?x-oss-process=image/resize,p_35" width="80" height="60">
+                    </a>
+                </div>
+                <div class="txt-box">
+                    <p class="p1">
+                        <a href="/p/ab8b536bb9ff60e3d8909b073893e507" target="_blank" title="哈登1打18！加时逆天3分颜射绝杀！牛逼逼逼逼……">哈登1打18！加时逆天3分颜射绝杀！牛逼逼逼逼……</a>
+                    </p>
+                    <p class="p2">
+                        <a href="/a/654" target="_blank" title="贵圈真乱">贵圈真乱</a>
+                        <span>01月04日</span>
+                    </p>
+                </div>
+            </li>
+            
+        </ul>
+        </div>
+    </div>
+
+    <div class="author-recommend">
+        <div class="author-recommend-head">
+            <h2 class="author-recommend-name">最新加入</h2>
+        </div>
+        <div class="author-recommend-list">
+
+            
+
+            <div class="author-item zg-clear zm-profile-section-item zm-item">
+                <div class="author-avatar">
+                    <a href="/a/2511" target="_blank">
+                        <img class="Avatar Avatar--xs" src="http://duweixin.oss-cn-beijing.aliyuncs.com/5ea8fd4a359d38cdaa92aa551cd2495282feafb3.jpg?x-oss-process=image/resize,p_35" alt="不会画出版社">
+                    </a>
+                </div>
+                <div class="author-item-content">
+                    <h3 class="author-item-title">
+                        <a href="/a/2511" target="_blank">
+                            <strong>不会画出版社</strong>
+                        </a>
+                    </h3>
+                </div>
+            </div>
+
+            
+
+            <div class="author-item zg-clear zm-profile-section-item zm-item">
+                <div class="author-avatar">
+                    <a href="/a/2510" target="_blank">
+                        <img class="Avatar Avatar--xs" src="http://duweixin.oss-cn-beijing.aliyuncs.com/a7bedd447dac92fd46170ab0aa1e5d87d8375ba8.jpg?x-oss-process=image/resize,p_35" alt="每晚读一本书">
+                    </a>
+                </div>
+                <div class="author-item-content">
+                    <h3 class="author-item-title">
+                        <a href="/a/2510" target="_blank">
+                            <strong>每晚读一本书</strong>
+                        </a>
+                    </h3>
+                </div>
+            </div>
+
+            
+
+            <div class="author-item zg-clear zm-profile-section-item zm-item">
+                <div class="author-avatar">
+                    <a href="/a/2509" target="_blank">
+                        <img class="Avatar Avatar--xs" src="http://duweixin.oss-cn-beijing.aliyuncs.com/1073dd2a2185bd3a97af372312a559c2e5db6725.jpg?x-oss-process=image/resize,p_35" alt="港股那点事">
+                    </a>
+                </div>
+                <div class="author-item-content">
+                    <h3 class="author-item-title">
+                        <a href="/a/2509" target="_blank">
+                            <strong>港股那点事</strong>
+                        </a>
+                    </h3>
+                </div>
+            </div>
+
+            
+
+            <div class="author-item zg-clear zm-profile-section-item zm-item">
+                <div class="author-avatar">
+                    <a href="/a/2508" target="_blank">
+                        <img class="Avatar Avatar--xs" src="http://duweixin.oss-cn-beijing.aliyuncs.com/1b99e9882017072a7e2a152f1b4b017dd74b6eb9.jpg?x-oss-process=image/resize,p_35" alt="飞碟说">
+                    </a>
+                </div>
+                <div class="author-item-content">
+                    <h3 class="author-item-title">
+                        <a href="/a/2508" target="_blank">
+                            <strong>飞碟说</strong>
+                        </a>
+                    </h3>
+                </div>
+            </div>
+
+            
+
+            <div class="author-item zg-clear zm-profile-section-item zm-item">
+                <div class="author-avatar">
+                    <a href="/a/2507" target="_blank">
+                        <img class="Avatar Avatar--xs" src="http://duweixin.oss-cn-beijing.aliyuncs.com/eaf278e2a6dc5fa107630c5f09539b5f87141903.jpg?x-oss-process=image/resize,p_35" alt="懂球妹">
+                    </a>
+                </div>
+                <div class="author-item-content">
+                    <h3 class="author-item-title">
+                        <a href="/a/2507" target="_blank">
+                            <strong>懂球妹</strong>
+                        </a>
+                    </h3>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <div class="author-recommend">
+        <div class="author-recommend-head">
+            <h2 class="author-recommend-name">热门账号</h2>
+        </div>
+        <div class="author-recommend-list">
+
+            
+
+            <div class="author-item zg-clear zm-profile-section-item zm-item">
+                <div class="author-avatar">
+                    <a href="/a/68" target="_blank">
+                        <img class="Avatar Avatar--xs" src="http://duweixin.oss-cn-beijing.aliyuncs.com/4e282f4c6e6659756c2c3d36b7465c05fc78a37e.jpg?x-oss-process=image/resize,p_35" alt="汽车洋葱圈">
+                    </a>
+                </div>
+                <div class="author-item-content">
+                    <h3 class="author-item-title">
+                        <a href="/a/68" target="_blank">
+                            <strong>汽车洋葱圈</strong>
+                        </a>
+                    </h3>
+                </div>
+            </div>
+
+            
+
+            <div class="author-item zg-clear zm-profile-section-item zm-item">
+                <div class="author-avatar">
+                    <a href="/a/23" target="_blank">
+                        <img class="Avatar Avatar--xs" src="http://duweixin.oss-cn-beijing.aliyuncs.com/e73bb5cbb8fb6d387a26bc722c399bea0770170d.jpg?x-oss-process=image/resize,p_35" alt="杨毅侃球">
+                    </a>
+                </div>
+                <div class="author-item-content">
+                    <h3 class="author-item-title">
+                        <a href="/a/23" target="_blank">
+                            <strong>杨毅侃球</strong>
+                        </a>
+                    </h3>
+                </div>
+            </div>
+
+            
+
+            <div class="author-item zg-clear zm-profile-section-item zm-item">
+                <div class="author-avatar">
+                    <a href="/a/112" target="_blank">
+                        <img class="Avatar Avatar--xs" src="http://duweixin.oss-cn-beijing.aliyuncs.com/3b5a0f91184ed2c71682934c58ae04d92573dd7a.jpg?x-oss-process=image/resize,p_35" alt="小声比比">
+                    </a>
+                </div>
+                <div class="author-item-content">
+                    <h3 class="author-item-title">
+                        <a href="/a/112" target="_blank">
+                            <strong>小声比比</strong>
+                        </a>
+                    </h3>
+                </div>
+            </div>
+
+            
+
+            <div class="author-item zg-clear zm-profile-section-item zm-item">
+                <div class="author-avatar">
+                    <a href="/a/2065" target="_blank">
+                        <img class="Avatar Avatar--xs" src="http://duweixin.oss-cn-beijing.aliyuncs.com/fa9c46446138f18dd7a278c1c5700e681542bbbe.jpg?x-oss-process=image/resize,p_35" alt="定投十年赚十倍">
+                    </a>
+                </div>
+                <div class="author-item-content">
+                    <h3 class="author-item-title">
+                        <a href="/a/2065" target="_blank">
+                            <strong>定投十年赚十倍</strong>
+                        </a>
+                    </h3>
+                </div>
+            </div>
+
+            
+
+            <div class="author-item zg-clear zm-profile-section-item zm-item">
+                <div class="author-avatar">
+                    <a href="/a/24" target="_blank">
+                        <img class="Avatar Avatar--xs" src="http://duweixin.oss-cn-beijing.aliyuncs.com/010c34b4b6dd099b1923fc8db89903c863ba6c27.jpg?x-oss-process=image/resize,p_35" alt="字节流">
+                    </a>
+                </div>
+                <div class="author-item-content">
+                    <h3 class="author-item-title">
+                        <a href="/a/24" target="_blank">
+                            <strong>字节流</strong>
+                        </a>
+                    </h3>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+
+ <!--<div class="author-recommend">-->
+        <!--<div class="author-recommend-head">-->
+            <!--<h2 class="author-recommend-name">更多</h2>-->
+        <!--</div>-->
+        <!--<div class="author-recommend-list">-->
+
+            <!--<div class="author-item zg-clear zm-profile-section-item zm-item">-->
+
+                <!--<div class="author-item-content recommend-more">-->
+                    <!--<h3 class="author-item-title">-->
+                        <!--<a href="/about">关于</a>-->
+
+                    <!--</h3>-->
+                <!--</div>-->
+            <!--</div>-->
+
+        <!--</div>-->
+    <!--</div>-->
+
+</div>
+
+        </div>
+    </div>
+
+
+
+    </div>
+<!--</div>-->
+
+
 <div class="footer">
-  © 2017 拴蛋头条 中国互联网举报中心京ICP证1401号京ICP备125439号-3京公网安备
+    <div class="wrapper">
+        <ul class="subNav clearfix">
+            <li><a href="/about">关于</a></li>
+        </ul>
+        <div class="describ">
+            <div class="commondes describ_top">
+                <span></span>
+
+            </div>
+
+
+
+
+            <div class="commondes describ_bottom">
+                <span><a href="http://www.miitbeian.gov.cn/" style="color:#999">粤ICP备16102228号-3</a></span>
+            </div>
+        </div>
+    </div>
 </div>
+
 </body>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?b66fea5322819b9ef67e513412ad4526";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script src="http://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="{{ url_for('static', filename='js/common.js')}}"></script>
+
+<script src="{{ url_for('static', filename='js/main.js')}}"></script>
+
+
+
+    <script>
+        $(function () {
+            loadMore(' /api/articles ', (res) => {
+                const content = res.data.map(article => (
+                    $(
+                        `<li>
+            <div class="img-box">
+                <a href="/p/${article.md5_url}" target="_blank">
+                    <img src="${article.cover}?x-oss-process=image/resize,p_35"
+                        style="height: 120px; width: auto; margin-left: -61.5px;">
+                </a>
+            </div>
+            <div class="txt-box">
+                <h3>
+                    <a href="/p/${article.md5_url}" target="_blank">${article.title}</a>
+                </h3>
+                <p class="txt-info" target="_blank">
+                    ${ article.digest}</p>
+                <div class="s-p">
+                    <a class="account" target="_blank"
+                      href="/a/${article.account.id}">${
+                            article.account.nickname}</a>
+                    <span class="s2">${new Date(article.published_at).Format("human")}</span>
+                    <div class="moe-box">
+                      <span class="sc" style="display: none;">
+                        <a href="javascript:void(0);" class="sc-a"></a>
+                      </span>
+                    </div>
+                </div>
+            </div>
+          </li>`
+                    )
+                )
+        )
+
+            $('.news-list').append(content)
+        })
+
+            // 滚动固定菜单
+            $(window).on('scroll', function () {
+                var s = $(window).scrollTop()
+                if (s > 74) {
+                    $('.wchannel').addClass('wchannel-fixed')
+                } else {
+                    $('.wchannel').removeClass('wchannel-fixed')
+                }
+            })
+        })
+    </script>
+
 
 </html>

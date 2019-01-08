@@ -21,4 +21,4 @@ if __name__ == '__main__':
     # # print(channel_name.task_id)  # None
     # db.session.commit()
     # print(channel_name.task_id)
-    app.run()
+    app.run(port=8000, host='127.0.0.1')

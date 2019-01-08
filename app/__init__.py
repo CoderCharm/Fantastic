@@ -6,6 +6,7 @@ import click
 from flask import Flask
 # from app.extensions import db
 # from flask_sqlalchemy import SQLAlchemy
+from flasgger import Swagger
 from settings import DATA_BASE
 from app.article import article as article_blueprint  # 导入蓝图
 
@@ -36,6 +37,7 @@ from app.article import article as article_blueprint  # 导入蓝图
 
 app = Flask(__name__)  # 创建flask app对象
 app.debug = True  # 调试模式
+swagger = Swagger(app)
 # 注册Blueprint
 app.register_blueprint(article_blueprint)
 

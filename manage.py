@@ -3,7 +3,7 @@
 # @Time: 2018/12/17 10:12
 # @Desc: 主项目文件
 from app import app
-import click
+# import click
 # from app.extensions import db
 # from app.models import *
 from datetime import datetime  #
@@ -21,4 +21,4 @@ if __name__ == '__main__':
     # # print(channel_name.task_id)  # None
     # db.session.commit()
     # print(channel_name.task_id)
-    app.run(port=8000, host='127.0.0.1')
+    app.run(port=8000)

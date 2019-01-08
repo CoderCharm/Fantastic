@@ -61,6 +61,7 @@ class FanTask(BaseModel, db.Model):
     task_id = db.Column(db.Integer, primary_key=True)
     uuid = db.Column(db.String(64), default=gen_id())
     t_author = db.Column(db.String(256))  # 原文作者
+    t_author_img = db.Column(db.String(1024))  # 作者头像链接
     t_title = db.Column(db.String(256), nullable=False)  # 不允许为空
     t_desc = db.Column(db.String(512))  # 简介 不允许为空
     t_image = db.Column(db.String(1024))  # 简介 不允许为空

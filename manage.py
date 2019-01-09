@@ -7,11 +7,10 @@ from app import app
 # from app.extensions import db
 # from app.models import *
 from datetime import datetime  #
-
+import scrapy
 
 if __name__ == '__main__':
-    print(
-        f"############# flask start {datetime.utcnow()} ###########")  # 打印两次原因 https://stackoverflow.com/questions/25504149/why-does-running-the-flask-dev-server-run-itself-twice
+    print("############# flask start {datetime.utcnow()} ###########")  # 打印两次原因 https://stackoverflow.com/questions/25504149/why-does-running-the-flask-dev-server-run-itself-twice
     print(app.url_map)  # 打印所有路由信息
     # manager.run()
     # channel_name = FanTaskDetail(33, "内容33", "评论33")

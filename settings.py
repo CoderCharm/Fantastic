@@ -5,7 +5,7 @@
 """
 配置文件
 """
-# MySql数据库配置
+# MySql DataBase setting file
 DATA_BASE = {
     "user": "bingbing",
     "password": "123456",
@@ -13,7 +13,7 @@ DATA_BASE = {
     "data_name": "fantastic",
 }
 
-# 本地xampp测试文件
+# local xampp test DataBase setting file
 # DATA_BASE = {
 #     "user": "root",
 #     "password": "",

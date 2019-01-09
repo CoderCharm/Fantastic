@@ -20,6 +20,8 @@ api = RedPrint('article')
 def get_article_list():
     """ 查询文章接口每次返回10条数据
         ---
+        tags:
+          - Articles API
         parameters:
           - name: page
             in: path
@@ -35,7 +37,6 @@ def get_article_list():
             required: true
             default: 10
             description: 每次数据长度
-
         responses:
           200:
             description: 返回新闻数据信息

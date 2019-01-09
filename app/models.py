@@ -9,11 +9,7 @@ ORM创建数据库
 import uuid
 import time
 
-from datetime import datetime
-from app import app
-from flask_sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy(app)
+from app.extensions import db
 
 
 def gen_id():

@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # @Author: wg
 # @Time: 2018/12/17 10:12
-# @Desc: 主项目文件
+# @Desc: main project file
 from app import app
 # import click
 # from app.extensions import db

@@ -5,21 +5,21 @@
 """
 配置文件
 """
-# MySql数据库配置
-# DATA_BASE = {
-#     "user": "bingbing",
-#     "password": "123456",
-#     "host": "39.105.119.228",
-#     "data_name": "fantastic",
-# }
-
-# 本地xampp测试文件
+# MySql DataBase setting file
 DATA_BASE = {
-    "user": "root",
-    "password": "",
-    "host": "127.0.0.1",
+    "user": "bingbing",
+    "password": "123456",
+    "host": "39.105.119.228",
     "data_name": "fantastic",
 }
+
+# local xampp test DataBase setting file
+# DATA_BASE = {
+#     "user": "root",
+#     "password": "",
+#     "host": "127.0.0.1",
+#     "data_name": "fantastic",
+# }
 
 
 

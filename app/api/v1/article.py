@@ -10,7 +10,7 @@ from app.libs.redprint import RedPrint
 from app.models import db, FanTask, FanTaskDetail
 from sqlalchemy import exc   # 捕获异常
 
-from app import swagger
+# from app import swagger
 
 # from flask_restful import Resource 准备使用flask_restful的 但是不是很好加载 route 暂时不考虑
 api = RedPrint('article')

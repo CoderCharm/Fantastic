@@ -60,7 +60,7 @@ class FanTask(BaseModel, db.Model):
     t_author_img = db.Column(db.String(1024))  # 作者头像链接
     t_title = db.Column(db.String(256), nullable=False)  # 不允许为空
     t_desc = db.Column(db.String(512))  # 简介 不允许为空
-    t_image = db.Column(db.String(1024))  # 简介 不允许为空
+    t_image = db.Column(db.String(1024))  # 首图
     t_url = db.Column(db.String(1024))  # 原文链接 先去掉
     total_click_count = db.Column(db.Integer)  # 总点击数
     current_click_count = db.Column(db.Integer)  # 当前点击数每天的点击量
@@ -80,6 +80,8 @@ class FanTask(BaseModel, db.Model):
     grad_read_count = db.Column(db.SmallInteger)  # 抓取阅读数
     grad_forward_count = db.Column(db.SmallInteger)  # 抓取转发数
     grad_comments_count = db.Column(db.SmallInteger)  # 抓取评论数
+    cate_id = db.Column(db.Integer)  # 分类
+    task_content = db.Column(db.Text) # 文章内容
 
     def __init__(self, **kwargs):
         super(FanTask, self).__init__(**kwargs)

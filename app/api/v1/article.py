@@ -41,22 +41,27 @@ def get_article_list():
             examples:
               data: {"code":200,"count":564,"data":[{"account":{"avatar":"http://duweixin.oss-cn-beijing.aliyuncs.com/e22dbb9947d65f1e80d0774dac042eaf6df2a651.jpg","description":"有内容的技术社区媒体","id":89,"nickname":"InfoQ","qrcode":null},"author":"望京一哥小智","content_url":"http://mp.weixin.qq.com/s?__biz=MjM5MDE0Mjc4MA==&mid=2651012453&idx=1&sn=5aa8355f1ba86ab346c3d7910c91791b&chksm=bdbec5368ac94c20544c7258e0fc64e9ace4943e0182a6224cbe5b0dd03966b4307778b351a2&scene=27#wechat_redirect","copyright_stat":11,"cover":"http://duweixin.oss-cn-beijing.aliyuncs.com/46401ac95baad5d9d291b2008f35b2302d4c7d39.jpg","digest":"如果用一句话形容你的 2018，会是什么？如果用一句话预测你的 2019，又会是什么？","id":10723,"md5_url":"de1d512dc11c8ccb21362d2c33540e54","published_at":"2019-01-06T10:31:55","title":"程序员2018年度代码报告，句句戳心","top":0}],"msg":"success","page":2,"size":10}
         """
-    info = FanTask.query.first()
+    info_res = FanTask.query.order_by(FanTask.task_id.desc()).limit(10)
+
+    data_list = []
+    for info in info_res:
+        tmp = {"account": {
+            "avatar": info.t_author_img,
+            "id": 89, "nickname": "InfoQ", "qrcode": None},
+            "author": info.t_author,
+            "content_url": info.t_url,
+            "copyright_stat": 11,
+            "cover": info.t_image,
+            "digest": info.t_desc,
+            "id": 10723,
+            "md5_url": info.uuid,
+            "published_at": "2019-01-06T10:31:55", "title": info.t_title,
+            "top": 0
+        }
+        data_list.append(tmp)
 
     data = {"code": 200, "count": 564,
-            "data": [
-                {"account": {
-                    "avatar": info.t_author_img,
-                    "id": 89, "nickname": "InfoQ", "qrcode": None},
-                    "author": info.t_author,
-                    "content_url": info.t_url,
-                    "copyright_stat": 11,
-                    "cover": info.t_image,
-                    "digest": info.t_desc,
-                    "id": 10723,
-                    "md5_url": info.uuid,
-                    "published_at": "2019-01-06T10:31:55", "title": info.t_title,
-                    "top": 0}],
+            "data": data_list,
             "msg": "success",
             "page": 2,
             "size": 10}
@@ -93,6 +98,7 @@ def add_article():
     t_desc = request.form.get("t_desc")
     t_image = request.form.get("t_image")
     t_url = request.form.get("t_url")
+    t_cate = request.form.get("t_cate")
     t_key = request.form.get("t_key")
     article_type = request.form.get("article_type")
     task_content = request.form.get("t_content")
@@ -100,6 +106,7 @@ def add_article():
     article_list = FanTask(
         t_author=t_author,
         t_title=t_title,
+        t_cate=t_cate,
         t_desc=t_desc,
         t_image=t_image,
         t_url=t_url,

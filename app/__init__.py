@@ -21,8 +21,9 @@ def config_mysql(app):
     app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql://{user}:{password}@{host}/{data_name}"
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True  #
     app.config['SECRET_KEY'] = '75aec5b16f558c35478c8fac339e4dbd'
-    from app.models import db
-    db.init_app(app)
+    # from app.models import db
+    # # with app.app_context():
+    # db.init_app(app)
 
 
 def create_app():
@@ -33,7 +34,12 @@ def create_app():
     app.register_blueprint(article_blueprint)
     from app.api.v1 import create_blueprint_v1  # import my define RedPrint
     app.register_blueprint(create_blueprint_v1(), url_prefix='/api/v1')
-    config_mysql(app)
+    config_mysql(app)  # init db setting
+    app.app_context().push()  # https://blog.csdn.net/zhongqiushen/article/details/79162792
+    from app.models import db
+    # with app.app_context():
+    #  https://stackoverflow.com/questions/46540664/no-application-found-either-work-inside-a-view-function-or-push-an-application
+    db.init_app(app)
     Swagger(app)
     return app
 

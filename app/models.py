@@ -60,8 +60,9 @@ class FanTask(BaseModel, db.Model):
     t_author_img = db.Column(db.String(1024))  # 作者头像链接
     t_title = db.Column(db.String(256), nullable=False)  # 不允许为空
     t_desc = db.Column(db.String(512))  # 简介 不允许为空
-    t_image = db.Column(db.String(1024))  # 简介 不允许为空
+    t_image = db.Column(db.String(1024))  # 封面图
     t_url = db.Column(db.String(1024))  # 原文链接 先去掉
+    t_cate = db.Column(db.String(8))   # 添加分类id 和 分类表关联
     total_click_count = db.Column(db.Integer)  # 总点击数
     current_click_count = db.Column(db.Integer)  # 当前点击数每天的点击量
     status = db.Column(db.SmallInteger, default="0")  # 任务状态(0关闭1开启2待审核-1已删除)
@@ -73,7 +74,7 @@ class FanTask(BaseModel, db.Model):
     article_type = db.Column(db.Integer, nullable=False)  # 1：普通类型 2：视频类型
     is_get = db.Column(db.Boolean, default=False)  # 是否已推送
     is_hot = db.Column(db.Boolean, default=False)  # 是否是热点
-    video_second = db.Column(db.SmallInteger)  # 播放时长 秒
+    video_second = db.Column(db.SmallInteger)  # 播放时长 毫秒
     video_url = db.Column(db.VARCHAR(255))  # 视频地址
     tags = db.Column(db.String(1024))  # 文章标签
     task_platform = db.Column(db.SmallInteger)  # 文章来源

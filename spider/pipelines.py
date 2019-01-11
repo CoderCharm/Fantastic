@@ -1,5 +1,6 @@
 # import os
 # os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+import uuid
 from app.models import db, FanTaskDetail, FanTask
 from sqlalchemy import exc  # 捕获异常
 
@@ -12,6 +13,7 @@ class MysqlPipline(object):
         article_list = FanTask(
             t_author=item["t_author"],
             t_author_img=item["t_author_img"],
+            uuid=uuid.uuid1().hex,
             t_title=item["t_title"],
             t_desc=item["t_desc"],
             t_image=item["t_image"],

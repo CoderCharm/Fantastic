@@ -12,11 +12,6 @@ import time
 from app.extensions import db
 
 
-def gen_id():
-    prefix = str(int(time.time()))[-5:]
-    return prefix + uuid.uuid4().hex
-
-
 class BaseModel(object):
     """模型基类，为每个模型补充创建时间与更新时间"""
     create_time = db.Column(db.String(64), index=True, default=int(time.time()*1000))  # index给定索引
@@ -55,7 +50,7 @@ class FanTask(BaseModel, db.Model):
     """文章列表"""
     # __tablename__ = "fan_task"
     task_id = db.Column(db.Integer, primary_key=True)
-    uuid = db.Column(db.String(64), default=gen_id())
+    uuid = db.Column(db.String(64), unique=True)
     t_author = db.Column(db.String(256))  # 原文作者
     t_author_img = db.Column(db.String(1024))  # 作者头像链接
     t_title = db.Column(db.String(256), nullable=False)  # 不允许为空

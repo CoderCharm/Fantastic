@@ -171,67 +171,65 @@ class ToutiaoSpider(scrapy.Spider):
 
                 # 内容抓取  Content crawling
                 content = html['data']['content']
-                # 内容处理区域  Content processing area
-                try:
-                    pat = re.compile(r'</header>(.*?)<footer></footer>', re.S)
-                    news_content = pat.findall(content)[0]
-                    # 匹配所有的img Match all img
-                    pat = re.compile(r'<a class="image" href=(.*?)></a>', re.S)
-                    content_img = pat.findall(news_content)
-                    try:
-                        if content_img:
-                            for i in range(len(content_img)):
-                                if content_img[i] in news_content:
-                                    news_content = news_content.replace(content_img[i], a_url[i]).replace(
-                                        '<a class="image"  href=',
-                                        '<img src="').replace(
-                                        '></a>', '">')
-                    except:
-                        news_content = ''
-                    if '<p class="footnote">' in news_content:
-                        # 进行匹配,去除名字
-                        pat = re.compile(r'<p class="footnote">(.*?)</p>', re.S)
-                        names_1 = pat.findall(news_content)[0]
-                        news_content = news_content.replace('<p class="footnote">' + names_1 + '</p>', '')
-                    catch_img_list = []
-                    # 暂时关闭图片下载，可以方便以后 Temporarily turn off the image download, which is convenient for future
-                    # 图片下载
-                    for url in a_url:
-                        src = {}
-                        # 把url进行切割 Cut the url
-                        fname = url.split('/')[-1][10:]
-                        # 生成当天时间  Generate time of day
-                        times = str(datetime.date.today()).replace('-', '/')
-                        # 现在时间
-                        date_time = str(datetime.datetime.now()).replace('-', '').replace(' ', '').replace(':', '')[:14]
-                        # 图片的路径  Path of the picture
-                        src_img = '/contentpic/' + times + '/' + date_time + '_' + fname + '.jpg'
-                        # 判断有没有这个文件  Determine if there is any such file
-                        if not os.path.exists('/contentpic/' + times):
-                            os.makedirs('/contentpic/' + times)
-                        # try:
-                        # 	request.urlretrieve(url, src_img)
-                        # 	putoss(src_img)
-                        # except Exception as e:
-                        # 	request.urlretrieve(url, src_img)
-                        # 	putoss(src_img)
-                        # 图片路径
-                        src['src'] = src_img
-
-                        catch_img_list.append(src)
+                # 内容处理
+                pat = re.compile(r'</header>(.*?)<footer></footer>', re.S)
+                news_content = pat.findall(content)[0].replace('type="gif"', '')
+                # 匹配所有的img
+                pat = re.compile(r'<a class="image"  href=(.*?)></a>', re.S)
+                content_img = pat.findall(news_content)
+                if content_img:
+                    for i in range(len(content_img)):
+                        if content_img[i] in news_content:
+                            news_content = news_content.replace(content_img[i], a_url[i]).replace(
+                                '<a class="image"  href=',
+                                '<img src="').replace('></a>',
+                                                      '">')
+                if '<p class="footnote">' in news_content:
+                    # 进行匹配,去除名字
+                    pat = re.compile(r'<p class="footnote">(.*?)</p>', re.S)
+                    names_1 = pat.findall(news_content)[0]
+                    news_content = news_content.replace('<p class="footnote">' + names_1 + '</p>', '')
+                catch_img_list = []
+                # 图片下载
+                for url in a_url:
+                    src = {}
+                    # 把url进行切割
+                    fname = url.split('/')[-1][10:]
+                    # 生成当天时间
+                    times = str(datetime.date.today()).replace('-', '/')
+                    # 现在时间
+                    date_time = str(datetime.datetime.now()).replace('-', '').replace(' ', '').replace(':', '')[:14]
+                    # 图片的路径
+                    src_img = '/contentpic/' + times + '/' + date_time + '_' + fname
+                    # 判断有没有这个文件
+                    if not os.path.exists('/contentpic/' + times):
+                        os.makedirs('/contentpic/' + times)
+                    # try:
+                    #     request.urlretrieve(url, src_img)
+                    # # putoss(src_img)
+                    # except Exception as e:
+                    #     request.urlretrieve(url, src_img)
+                    # # putoss(src_img)
+                    # 图片路径
+                    src['src'] = src_img
+    
+                    catch_img_list.append(src)
+                    # if url in news_content:
+                    #     #         # 进行替换
+                    #     #         # 进行替换
+                    #     news_content = news_content.replace(url, 'http://katu.haocishop.cn' + src_img)
                     # if url in news_content:
                     # 	#         # 进行替换
                     # 	news_content = news_content.replace(url, 'http://katu.haocishop.cn' + src_img)
                     # 正则 只保留 p img 标签  Regular only keep p img tags
+                    # print(news_content)
                     news_content = re.sub(r"<(?!/?\s?p|/?\s?img)[^<>]*>", "", news_content)
                     news_content = re.sub(r"<p[\S\s]*?>", "<p>", news_content)
                     news_content = news_content.replace('\n', '')
                     item['task_content'] = news_content
-                    # print(news_content)
+            
                     yield item
-                except:
-                    print('有问题的数据')
-
+               
         print("休眠请求下一页Url....")
         time.sleep(random.uniform(5, 15))
         self.num += 1

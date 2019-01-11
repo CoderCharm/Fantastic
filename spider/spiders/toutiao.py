@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
-import scrapy
-import json, datetime
 import os
-import random
+import re
 import time
-import re, requests
+import json
+import datetime
+import random
+
+import requests
+
+import scrapy
 from spider.items import FanTaskItem
 
 

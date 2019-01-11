@@ -9,8 +9,9 @@ from spider.items import FanTaskItem
 
 
 class ToutiaoSpider(scrapy.Spider):
-    '''初始化数据'''
-    '''Initialization data'''
+    """
+    Initialization data
+    """
 
     name = 'toutiao'
     allowed_domains = ['lg.snssdk.com']

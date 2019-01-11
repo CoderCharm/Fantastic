@@ -14,3 +14,7 @@ from flask import render_template, redirect, url_for
 @article.route("/")  # 指定默认路由
 def index():
     return render_template("article/index.html")
+
+@article.route("/news")  # 新闻详情页
+def news():
+    return render_template("news.html")

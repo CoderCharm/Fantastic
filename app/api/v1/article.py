@@ -104,10 +104,24 @@ def get_article_cate():
 @api.route('/get/detail', methods=["GET"])
 def get_article_detail():
 	"""
+	所要传的参数uuid
 	获取文章详情
 	:return:
 	"""
-	return jsonify({"param": request.args.get("article_id")})
+	# 根据uid查询内容：标题，标签
+	uuid = request.args.get('uuid')
+	print(uuid)
+	info_res = FanTask.query.filter(FanTask.uuid == uuid).all()
+	info_news = FanTaskDetail.query.filter(FanTask.uuid == uuid).all()
+	src = {}
+	for info in info_res:
+		src['title'] = info.t_title
+	for info in info_news:
+		src['nes_content'] = info.task_content
+	
+	data = {"code": 200,
+	        "data": src, }
+	return jsonify(data)
 
 
 @api.route('/del', methods=["DELETE"])

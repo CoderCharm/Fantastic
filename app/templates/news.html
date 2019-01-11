@@ -5,37 +5,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>拴蛋头条</title>
+    <title>Life is Fantastic</title>
     <link rel="stylesheet" href="{{ url_for("static", filename='css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{ url_for("static", filename='css/main.css')}}">
+      <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="../static/css/author.css">
 </head>
 
 <body>
-<div class="navbar navbar-default">
-    <div class="container">
-        <div class="navbar-header">
-            <a href="article/index.html" class="navbar-brand">
-            </a>
+ <div class="middlebar">
+        <div class="middlebar-inner clearfix">
+            <div class="bui-left logo-box">
+                <a href="/" class="logo-link">
+                    <img src="../static/img/logo.jpg" class="logo" style="width: 200px;height: 50px;">
+                </a>
+            </div>
+            <div class="search-wrapper fr">
+                <input type="text" placeholder="搜索公众号" autocomplete="off" class="search-inner"
+                       value=""/>
+                <div class="search-btn">
+                    <button type="button">
+                        <span>搜索</span>
+                    </button>
+                </div>
+            </div>
         </div>
-        <ul class="nav navbar-nav">
-            <li><a href="#">热闻 ⋅ 拴蛋头条</a></li>
-            <li><a href="#">国内</a></li>
-            <li><a href="#">国际</a></li>
-            <li><a href="#">社会</a></li>
-            <li><a href="#">数读</a></li>
-            <li><a href="#">军事</a></li>
-            <li><a href="#">政务</a></li>
-            <li><a href="#">公益</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="login.html">登录</a></li>
-            <li><a href="signup.html">注册</a></li>
-        </ul>
     </div>
-</div>
+ <br>
+ <br>
+ <br>
 <div class="container">
   <div class="col-md-8 news">
     <h1 class="title">2年前他为教育事业和高圆圆分手，今成这般，高圆圆：我有一句MMP如鲠在喉</h1>
+      <br>
+      <br>
     <p class="info">
       <span>阅读：35k</span> •
        <span>王花花</span> •
@@ -44,6 +48,8 @@
        <span class="label label-default">帅逼</span>
        <span class="label label-default">情感</span>
     </p>
+      <br>
+      <br>
     <div class="content">
       <img src="img/2-2.jpg" alt="">
       <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas iste vitae voluptas, magni. Dignissimos deserunt fugiat nulla repellat, officia quae placeat magnam enim quia, voluptatibus natus temporibus corporis, autem aperiam.</div>

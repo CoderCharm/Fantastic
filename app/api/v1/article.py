@@ -18,7 +18,7 @@ api = RedPrint('article')
 @api.route('/get/list', methods=["GET"])
 def get_article_list():
 	""" 查询文章接口每次返回10条数据
-		---
+	
 		tags:
 		  - Articles API
 		parameters:

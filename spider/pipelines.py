@@ -34,6 +34,7 @@ class MysqlPipline(object):
             db.session.add(article_list)
             db.session.commit()
             article_detail = FanTaskDetail(task_id=article_list.task_id, task_content=item["task_content"])
+            print(item["task_content"])
             db.session.add(article_detail)
             db.session.commit()
         except exc.SQLAlchemyError:

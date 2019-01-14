@@ -18,7 +18,6 @@ api = RedPrint('article')
 @api.route('/get/list', methods=["GET"])
 def get_article_list():
 	""" 查询文章接口每次返回10条数据
-	
 		tags:
 		  - Articles API
 		parameters:
@@ -112,13 +111,21 @@ def get_article_detail():
 	uuid = request.args.get('uuid')
 	print(uuid)
 	info_res = FanTask.query.filter(FanTask.uuid == uuid).all()
-	info_news = FanTaskDetail.query.filter(FanTask.uuid == uuid).all()
+	print(info_res)
+	# info_news = FanTaskDetail.query.filter(FanTask.uuid == uuid).all()
 	src = {}
 	for info in info_res:
+		print(info)
+		print(info.t_title,'-----------------------')
+		
 		src['title'] = info.t_title
+		task_id = info.task_id
+	print(task_id)
+	info_news = FanTaskDetail.query.filter(FanTaskDetail.task_id == task_id).all()
+	print(info_news)
 	for info in info_news:
 		src['nes_content'] = info.task_content
-	
+		print(info.task_content)
 	data = {"code": 200,
 	        "data": src, }
 	return jsonify(data)

@@ -18,3 +18,9 @@ def index():
 @article.route("/news")  # 新闻详情页
 def news():
     return render_template("news.html")
+
+#详情页页面
+@article.route('/p/<name>', methods=['GET'])
+def test(name):
+    print(name)
+    return render_template('news.html')

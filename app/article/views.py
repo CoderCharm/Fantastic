@@ -15,12 +15,15 @@ from flask import render_template, redirect, url_for
 def index():
     return render_template("article/index.html")
 
-@article.route("/news")  # 新闻详情页
-def news():
-    return render_template("news.html")
-
 #详情页页面
 @article.route('/p/<name>', methods=['GET'])
 def test(name):
     print(name)
     return render_template('news.html')
+
+#后续功能
+#登录注册页面
+@article.route("/logins")
+def login():
+    return render_template('login.html')
+    pass

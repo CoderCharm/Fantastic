@@ -44,8 +44,8 @@ class FanTaskCate(BaseModel, db.Model):
 
     def __repr__(self):
         return f"<TaskCate: {self.cate_name}>"
-
-
+    
+    
 class FanTask(BaseModel, db.Model):
     """文章列表"""
     # __tablename__ = "fan_task"
@@ -87,7 +87,7 @@ class FanTask(BaseModel, db.Model):
 class FanTaskDetail(BaseModel, db.Model):
     """文章详情表"""
     # __tablename__ = "fan_task_detail"
-    task_id = db.Column(db.SmallInteger, nullable=False, primary_key=True)   # 文章id
+    task_id = db.Column(db.Integer, nullable=False, primary_key=True)   # 文章id
     task_content = db.Column(db.Text, nullable=False)  # 文章内容
     task_comment = db.Column(db.Text)  # 文章评论区预留
 

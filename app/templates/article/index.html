@@ -246,7 +246,7 @@
 <div class="footer">
     <div class="wrapper">
         <!--<ul class="subNav clearfix">-->
-        <!--<li><a href="/about">关于</a></li>-->
+            <!--<li><a href="/about">关于</a></li>-->
         <!--</ul>-->
         <div class="describ">
             <div class="commondes describ_top">
@@ -275,6 +275,7 @@
 <script src="http://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
 <script src="../static/js/common.js"></script>
 <script src="../static/js/main.js"></script>
+
 <script>
     $(document).ready(function () {
         $.ajax({
@@ -324,10 +325,10 @@
 
 <script>
     $(function () {
-        loadMore('/api/v1/article/get/list ', (res) = > {
-            const content = res.data.map(article = > (
-                $(
-                    `<li>
+        loadMore(' /api/v1/article/get/list ', (res) => {
+            const content = res.data.map(article => (
+                    $(
+                        `<li>
             <div class="img-box">
                 <a href="/p/${article.md5_url}" target="_blank">
                     <img src="${article.cover}?x-oss-process=image/resize,p_50"
@@ -343,7 +344,7 @@
                 <div class="s-p">
                     <a class="account" target="_blank"
                       href="/a/${article.account.id}">${
-                        article.account.nickname}</a>
+                            article.account.nickname}</a>
                     <span class="s2">${new Date(article.published_at).Format("human")}</span>
                     <div class="moe-box">
                       <span class="sc" style="display: none;">
@@ -353,12 +354,12 @@
                 </div>
             </div>
           </li>`
+                    )
                 )
             )
-    )
 
-        $('.news-list').append(content)
-    })
+            $('.news-list').append(content)
+        })
 
         // 滚动固定菜单
         $(window).on('scroll', function () {
@@ -373,11 +374,11 @@
 
     })
     //精选
-    $.get('/api/v1/article/featured', (res) = > {
+    $.get('/api/v1/article/featured', (res) => {
 
-        const content = res.data.map(article = > (
-            $(
-                `<li>
+        const content = res.data.map(article => (
+                $(
+                    `<li>
             <div class="img-box">
                 <a href="/p/${article.md5_url}" target="_blank">
                     <img src="${article.cover}?x-oss-process=image/resize,p_50"
@@ -392,7 +393,7 @@
                 <div class="s-p">
                     <a class="account" target="_blank"
                       href="/a/${article.account.id}">${
-                    article.account.nickname}</a>
+                        article.account.nickname}</a>
                     <span class="s2">${new Date(article.published_at).Format("human")}</span>
                     <div class="moe-box">
                       <span class="sc" style="display: none;">
@@ -402,31 +403,33 @@
                 </div>
             </div>
           </li>`
+                )
             )
         )
-    )
 
-    $('.news-list-right').append(content)
+        $('.news-list-right').append(content)
 
 
     })
 
     //分类列表
-    $.get('/api/v1/article/get/cate', (data) = > {
+    $.get('/api/v1/article/get/cate', (data) => {
         var str = "<li>";
-    $.each(data.cate_list, function (index, element) {
-        console.log(element.cate_name)
-        str += '                        <a class="wchannel-item "\n' +
-            '                           >\n' +
-            '                            <span id=' + element.cate_id + '>' + element.cate_name + '</span>\n' +
-            '                        </a>\n' +
-            '                    </li>'
+        $.each(data.cate_list, function (index, element) {
+            console.log(element.cate_name)
+            str += '                        <a class="wchannel-item "\n' +
+                '                           href="/c/biancheng">\n' +
+                '                            <span>' + element.cate_name + '</span>\n' +
+                '                        </a>\n' +
+                '                    </li>'
 
 
-    });
-    $('.cates').append(str)
+        });
+        $('.cates').append(str)
+
+
     })
-    //点击出发ajax
+
 
 </script>
 

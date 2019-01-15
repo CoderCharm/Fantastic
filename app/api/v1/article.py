@@ -150,7 +150,8 @@ def get_article_detail():
         src['grad_read_count'] = info.grad_read_count
 
         # 作者
-        src['t_author'] = info.t_author
+        src['author'] = info.t_author
+        src["author_id"] = info.t_author_id
         # 文章发布时间
         src['t_time'] = time.strftime("%Y-%m-%d", time.localtime(int(info.t_time[:-3])))
         t_cate = int(info.t_cate)
@@ -215,12 +216,6 @@ def get_featured():
             }
 
     return jsonify(data)
-
-
-# 作者接口
-@api.route('/author')
-def author():
-    pass
 
 
 @api.route('/add', methods=["POST"])

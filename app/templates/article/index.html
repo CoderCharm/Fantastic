@@ -287,16 +287,16 @@
                         $('.news-list').append(
                             '<li>' +
                             '<div class="img-box">\n' +
-                            '<a href="/p/' + article.md5_url + '" target="_blank">\n' +
+                            '<a href="/article/detail/' + article.md5_url + '" target="_blank">\n' +
                             '<img src="' + article.cover + '" style="height: 120px; width: auto; margin-left: -61.5px;">' +
                             '</a>' +
                             '</div>' +
                             '<div class="txt-box">' +
-                            '<h3><a href="/p/' + article.md5_url + '" target="_blank">' + article.title + '</a></h3>' +
+                            '<h3><a href="/article/detail/' + article.md5_url + '" target="_blank">' + article.title + '</a></h3>' +
                             '<p class="txt-info" target="_blank">' +
                             article.digest + '</p>' +
                             '<div class="s-p">' +
-                            '<a class="account" target="_blank" href="/a/' + article.account.id + '">' + article.account.nickname + '' +
+                            '<a class="account" target="_blank" href="/author/' + article.author_id + '">' + article.account.nickname + '' +
                             '</a>' +
                             '<span class="s2">' + new Date(article.published_at).Format("human") + '</span>' +
                             '<div class="moe-box">' +
@@ -330,14 +330,14 @@
                     $(
                         `<li>
             <div class="img-box">
-                <a href="/p/${article.md5_url}" target="_blank">
+                <a href="/article/detail/${article.md5_url}" target="_blank">
                     <img src="${article.cover}?x-oss-process=image/resize,p_50"
                         style="height: 120px; width: auto; margin-left: -61.5px;">
                 </a>
             </div>
             <div class="txt-box">
                 <h3>
-                    <a href="/p/${article.md5_url}" target="_blank">${article.title}</a>
+                    <a href="/article/detail/${article.md5_url}" target="_blank">${article.title}</a>
                 </h3>
                 <p class="txt-info" target="_blank">
                     ${ article.digest}</p>

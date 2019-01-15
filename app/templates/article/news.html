@@ -131,19 +131,19 @@
                 $(
                     `<li>
             <div class="img-box">
-                <a href="/p/${article.md5_url}" target="_blank">
+                <a href="/article/detail/${article.md5_url}" target="_blank">
                     <img src="${article.cover}?x-oss-process=image/resize,p_50"
                         style="height: 60px; width: 80px;;">
                 </a>
             </div>
             <div class="txt-box">
                 <p class="p1">
-                    <a href="/p/${article.md5_url}" target="_blank">${article.title}</a>
+                    <a href="/article/detail/${article.md5_url}" target="_blank">${article.title}</a>
                 </p>
 
                 <div class="s-p">
                     <a class="account" target="_blank"
-                      href="/a/${article.account.id}">${
+                      href="/author/${article.account.id}">${
                         article.account.nickname}</a>
                     <span class="s2">${new Date(article.published_at).Format("human")}</span>
                     <div class="moe-box">

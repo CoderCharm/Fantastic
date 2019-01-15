@@ -7,11 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Life is Fantastic</title>
 
-    <link rel="stylesheet" href='../static/css/bootstrap.min.css'>
-    <link rel="stylesheet" href="../static/css/main.css">
-    <link rel="stylesheet" href="../static/css/common.css">
-    <link rel="stylesheet" href="../static/css/index.css">
-    <link rel="stylesheet" href="../static/css/author.css">
+    <link rel="stylesheet" href='../../static/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="../../static/css/main.css">
+    <link rel="stylesheet" href="../../static/css/common.css">
+    <link rel="stylesheet" href="../../static/css/index.css">
+    <link rel="stylesheet" href="../../static/css/author.css">
 </head>
 
 <body>
@@ -19,7 +19,7 @@
     <div class="middlebar-inner clearfix">
         <div class="bui-left logo-box">
             <a href="/" class="logo-link">
-                <img src="../static/img/logo.jpg" class="logo" style="width: 200px;height: 50px;">
+                <img src="../../static/img/logo.jpg" class="logo" style="width: 200px;height: 50px;">
             </a>
         </div>
         <div class="search-wrapper fr">
@@ -108,19 +108,19 @@
 </div>
 </body>
 <script src="http://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
-<script src="../static/js/common.js"></script>
-<script src="../static/js/main.js"></script>
+<script src="../../static/js/common.js"></script>
+<script src="../../static/js/main.js"></script>
 
 <script>
     var num = this.location.href.split('/')[this.location.href.split('/').length - 1]
     $.get('/api/v1/article/get/detail?uuid=' + num, (contents) => {
-        var data = contents.data
-        console.log(data)
-        $('h1').html(data.title)
-        $('#grad_read_count').html('阅读：' + data.grad_read_count)
-        $('#t_author').html(data.t_author)
-        $('#t_time').html(data.t_time)
-        $('#cate').html(data.cate)
+        var data = contents.data;
+        console.log(data);
+        $('h1').html(data.title);
+        $('#grad_read_count').html('阅读：' + data.grad_read_count);
+        $('#t_author').html(data.t_author);
+        $('#t_time').html(data.t_time);
+        $('#cate').html(data.cate);
         $('#content').html(data.nes_content);
 
     })

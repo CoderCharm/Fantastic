@@ -279,7 +279,7 @@
 
 <script>
     $(function () {
-        loadMore(' /api/v1/article/get/list ', (res) => {
+        loadMore('/api/v1/article/get/list ', (res) => {
             const content = res.data.map(article => (
                     $(
                         `<li>
@@ -372,18 +372,16 @@
         $.each(data.cate_list, function (index, element) {
             console.log(element.cate_name)
             str += '                        <a class="wchannel-item "\n' +
-                '                           href="/c/biancheng">\n' +
-                '                            <span>' + element.cate_name + '</span>\n' +
+                '                           >\n' +
+                '                            <span id='+element.cate_id +'>' + element.cate_name + '</span>\n' +
                 '                        </a>\n' +
                 '                    </li>'
 
 
         });
         $('.cates').append(str)
-
-
     })
-
+//点击出发ajax
 
 </script>
 

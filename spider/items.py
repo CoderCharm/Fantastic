@@ -33,3 +33,4 @@ class FanTaskItem(scrapy.Item):
     grad_forward_count = scrapy.Field()  # 抓取转发数
     grad_comments_count = scrapy.Field()  # 抓取评论数
     task_content = scrapy.Field()  # 文章内容
+    user_id = scrapy.Field()

@@ -113,7 +113,7 @@ class ToutiaoSpider(scrapy.Spider):
                 item['t_author_img'] = new_content.get('user_info')['avatar_url']
                 #作者id
                 user_id = new_content.get('user_info')['user_id']
-                item['user_id'] = user_id
+                item['t_author_id'] = user_id
         
                 article_id = new_content.get("item_id")  # id
                 item["t_key"] = "toutiao" + str(article_id)

@@ -18,12 +18,16 @@ def index():
 
 
 # 详情页页面
-@article.route('/p/<name>', methods=['GET'])
-def test(name):
+@article.route('/article/detail/<task_id>', methods=['GET'])
+def test(task_id):
 
     return render_template('article/news.html')
 
+#作者页面
+@article.route('/author/<author_id>', methods=['GET'])
+def author(author_id):
 
+    return render_template('article/author.html')
 # 后续功能
 # 登录注册页面
 @article.route("/login")

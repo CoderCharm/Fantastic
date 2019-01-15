@@ -28,21 +28,21 @@ class MysqlPipline(object):
 			grad_forward_count=item["grad_forward_count"],
 			grad_comments_count=item["grad_comments_count"],
 			article_type=item["article_type"],
-			user_id=item['user_id']
+			t_author_id=item['t_author_id']
 			
 		)
 		print()
 		
-		# try:
-		db.session.add(article_list)
-		db.session.commit()
-		article_detail = FanTaskDetail(task_id=article_list.task_id, task_content=item["task_content"])
-		print(item["task_content"])
-		db.session.add(article_detail)
-		db.session.commit()
-		# except exc.SQLAlchemyError:
-		# 	print("------------C-----------")
-		# 	db.session.rollback()
+		try:
+			db.session.add(article_list)
+			db.session.commit()
+			article_detail = FanTaskDetail(task_id=article_list.task_id, task_content=item["task_content"])
+			print(item["task_content"])
+			db.session.add(article_detail)
+			db.session.commit()
+		except exc.SQLAlchemyError:
+			print("------------C-----------")
+			db.session.rollback()
 		print("---------B------------")
 		# 返回交给下一个管道文件处理
 		return item

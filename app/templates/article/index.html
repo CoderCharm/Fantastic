@@ -275,7 +275,52 @@
 <script src="http://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
 <script src="../static/js/common.js"></script>
 <script src="../static/js/main.js"></script>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: "/api/v1/article/get/list?page=1&size=10",
+            success: function (data) {
+                if (data.code === 200) {
+                    for (var i = 0; i < data.data.length; i++) {
+                        var article = data.data[i];
+                        $('.news-list').append(
+                            '<li>' +
+                            '<div class="img-box">\n' +
+                            '<a href="/p/'+article.md5_url+ '" target="_blank">\n' +
+                            '<img src="'+article.cover+ '" style="height: 120px; width: auto; margin-left: -61.5px;">' +
+                            '</a>' +
+                            '</div>' +
+                            '<div class="txt-box">' +
+                            '<h3><a href="/p/' + article.md5_url + '" target="_blank">' + article.title + '</a></h3>' +
+                            '<p class="txt-info" target="_blank">' +
+                            article.digest + '</p>' +
+                            '<div class="s-p">' +
+                            '<a class="account" target="_blank" href="/a/' + article.account.id + '">' + article.account.nickname + '' +
+                            '</a>' +
+                            '<span class="s2">${new Date(article.published_at).Format("human")}</span>' +
+                            '<div class="moe-box">' +
+                            '<span class="sc" style="display: none;">' +
+                            '<a href="javascript:void(0);" class="sc-a"></a>' +
+                            '</span>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>' +
+                            '</li>'
+                        )
+                    }
+                } else {
+//                        首页请求状态码错误执行
+                    alert("Error")
+                }
+            },
+            error: function () {
+//                    首页请求接口错误执行
+                console.log("初次请求接口错误!");
+            }
+        });
+    })
 
+</script>
 
 <script>
     $(function () {

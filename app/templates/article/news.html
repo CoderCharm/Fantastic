@@ -62,7 +62,7 @@
                     <h2 class="author-recommend-name">Life is Fantastic</h2>
                 </div>
                 <div class="author-recommend-list">
-                    <a style="color: #8590A6" href="/about" target="_blank">一个帮你更好发现内容的地方</a>
+                    <a style="color: #8590A6" href="/about">一个帮你更好发现内容的地方</a>
                 </div>
             </div>
 
@@ -118,7 +118,7 @@
         console.log(data);
         $('h1').html(data.title);
         $('#grad_read_count').html('阅读：' + data.grad_read_count);
-        $('#t_author').html(data.t_author);
+        $('#t_author').html('<a href="/author/' + data.author_id + '">'+ data.author +'</a>');
         $('#t_time').html(data.t_time);
         $('#cate').html(data.cate);
         $('#content').html(data.nes_content);
@@ -132,7 +132,7 @@
                     `<li>
             <div class="img-box">
                 <a href="/article/detail/${article.md5_url}" target="_blank">
-                    <img src="${article.cover}?x-oss-process=image/resize,p_50"
+                    <img src="${article.cover}"
                         style="height: 60px; width: 80px;;">
                 </a>
             </div>

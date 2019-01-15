@@ -17,11 +17,16 @@ def index():
     return render_template("article/index.html")
 
 
-# 详情页页面
-@article.route('/p/<name>', methods=['GET'])
-def test(name):
-
+# article detail page
+@article.route('/article/detail/<task_id>', methods=['GET'])
+def detail_page(task_id):
     return render_template('article/news.html')
+
+
+# author page
+@article.route('/author/<author_id>', methods=['GET'])
+def author_page(author_id):
+    return render_template('article/author.html')
 
 
 # 后续功能

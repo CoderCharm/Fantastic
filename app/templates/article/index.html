@@ -61,9 +61,8 @@
                         <div class="wchannel">
 
                             <ul class="cates">
-
                                 <li>
-                                    <a class="wchannel-item  active " href="/">
+                                    <a class="wchannel-item  active " href="#">
                                         <span id="cate_info">推荐</span>
                                     </a>
                                 </li>
@@ -123,7 +122,7 @@
 
                         <div class="author-item zg-clear zm-profile-section-item zm-item">
                             <div class="author-avatar">
-                                <a href="/a/186" target="_blank">
+                                <a href="#" target="_blank">
                                     <img class="Avatar Avatar--xs"
                                          src="http://duweixin.oss-cn-beijing.aliyuncs.com/196a481fa741b2d4007169b6d6e8cf7a6c4a759e.jpg?x-oss-process=image/resize,p_50"
                                          alt="丁香医生">
@@ -133,78 +132,6 @@
                                 <h3 class="author-item-title">
                                     <a href="/a/186" target="_blank">
                                         <strong>丁香医生</strong>
-                                    </a>
-                                </h3>
-                            </div>
-                        </div>
-
-
-                        <div class="author-item zg-clear zm-profile-section-item zm-item">
-                            <div class="author-avatar">
-                                <a href="/a/2065" target="_blank">
-                                    <img class="Avatar Avatar--xs"
-                                         src="http://duweixin.oss-cn-beijing.aliyuncs.com/fa9c46446138f18dd7a278c1c5700e681542bbbe.jpg?x-oss-process=image/resize,p_50"
-                                         alt="定投十年赚十倍">
-                                </a>
-                            </div>
-                            <div class="author-item-content">
-                                <h3 class="author-item-title">
-                                    <a href="/a/2065" target="_blank">
-                                        <strong>定投十年赚十倍</strong>
-                                    </a>
-                                </h3>
-                            </div>
-                        </div>
-
-
-                        <div class="author-item zg-clear zm-profile-section-item zm-item">
-                            <div class="author-avatar">
-                                <a href="/a/84" target="_blank">
-                                    <img class="Avatar Avatar--xs"
-                                         src="http://duweixin.oss-cn-beijing.aliyuncs.com/a04bc8a08d315b2a103d031f480beab313313950.jpg?x-oss-process=image/resize,p_50"
-                                         alt="拾遗">
-                                </a>
-                            </div>
-                            <div class="author-item-content">
-                                <h3 class="author-item-title">
-                                    <a href="/a/84" target="_blank">
-                                        <strong>拾遗</strong>
-                                    </a>
-                                </h3>
-                            </div>
-                        </div>
-
-
-                        <div class="author-item zg-clear zm-profile-section-item zm-item">
-                            <div class="author-avatar">
-                                <a href="/a/70" target="_blank">
-                                    <img class="Avatar Avatar--xs"
-                                         src="http://duweixin.oss-cn-beijing.aliyuncs.com/dfa536b4ff94a0e16f930a3be4121538276e8f8e.jpg?x-oss-process=image/resize,p_50"
-                                         alt="老金扯谈">
-                                </a>
-                            </div>
-                            <div class="author-item-content">
-                                <h3 class="author-item-title">
-                                    <a href="/a/70" target="_blank">
-                                        <strong>老金扯谈</strong>
-                                    </a>
-                                </h3>
-                            </div>
-                        </div>
-
-
-                        <div class="author-item zg-clear zm-profile-section-item zm-item">
-                            <div class="author-avatar">
-                                <a href="/a/102" target="_blank">
-                                    <img class="Avatar Avatar--xs"
-                                         src="http://duweixin.oss-cn-beijing.aliyuncs.com/4b0df5269f8b56440451ffca36243f6edf4e1c66.jpg?x-oss-process=image/resize,p_50"
-                                         alt="小马宋">
-                                </a>
-                            </div>
-                            <div class="author-item-content">
-                                <h3 class="author-item-title">
-                                    <a href="/a/102" target="_blank">
-                                        <strong>小马宋</strong>
                                     </a>
                                 </h3>
                             </div>
@@ -262,23 +189,29 @@
 </div>
 
 </body>
-<script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?b66fea5322819b9ef67e513412ad4526";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
+<!--<script>-->
+    <!--var _hmt = _hmt || [];-->
+    <!--(function () {-->
+        <!--var hm = document.createElement("script");-->
+        <!--hm.src = "https://hm.baidu.com/hm.js?b66fea5322819b9ef67e513412ad4526";-->
+        <!--var s = document.getElementsByTagName("script")[0];-->
+        <!--s.parentNode.insertBefore(hm, s);-->
+    <!--})();-->
+<!--</script>-->
 
 <script src="http://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
 <script src="../static/js/common.js"></script>
 <script src="../static/js/main.js"></script>
+
 <script>
     $(document).ready(function () {
+        // 获取首页数据
         $.ajax({
-            url: "/api/v1/article/get/list?page=1&size=10",
+            url: "/api/v1/article/get/list",
+            data: {
+                page: 1,
+                size: 10
+            },
             success: function (data) {
                 if (data.code === 200) {
                     for (var i = 0; i < data.data.length; i++) {
@@ -309,18 +242,95 @@
                         )
                     }
                 } else {
-//                        首页请求状态码错误执行
-                    alert("Error")
+                //  首页请求状态码错误执行
+                    console.log("首页状态码错误")
                 }
             },
             error: function () {
-//                    首页请求接口错误执行
-                console.log("初次请求接口错误!");
+                //  首页请求接口错误执行
+                console.log("初次请求数据错误!");
             }
         });
+
+        // 获取分类数据
+//        $.ajax({
+//            url: "/api/v1/article/get/cate",
+//            success: function (data) {
+//                // 判断状态码
+//                if (data.code === 200){
+//                    // 渲染数据
+//                    for (var i = 0; i < data.cate_list.length; i++) {
+//                        var cate = data.cate_list[i];
+//                        // 循环构建数据
+//                        $('.cates').append(
+//                            '<li>' +
+//                            '<a class="wchannel-item " href="#">' +
+//                            '<span id="'+cate.cate_id+'">'+cate.cate_name+'</span>' +
+//                            '</a>' +
+//                            '</li>'
+//                        )
+//                    }
+//                }else {
+//                    console.log("分类状态码不对");
+//                }
+//            },
+//                error: function () {
+//                //  首页请求接口错误执行
+//                console.log("请求分类接口错误!");
+//            }
+//        });
+
+        // 精选
+//        $.ajax({
+//            url: "/api/v1/article/featured",
+//            success: function (data) {
+//                // 判断状态码
+//                if (data.code === 200){
+//                    // 渲染数据
+//                    for (var i = 0; i < data.cate_list.length; i++) {
+//                        var cate = data.cate_list[i];
+//                        // 循环构建数据
+//                        $('.cates').append(
+//                            '<li>' +
+//                            '<a class="wchannel-item " href="#">' +
+//                            '<span id="'+cate.cate_id+'">'+cate.cate_name+'</span>' +
+//                            '</a>' +
+//                            '</li>'
+//                        )
+//                    }
+//                }else {
+//                    console.log("分类状态码不对");
+//                }
+//            },
+//                error: function () {
+//                //  首页请求接口错误执行
+//                console.log("请求分类接口错误!");
+//            }
+//        });
+
+    });
+
+    $('ul.cates').on('click','li',function(){
+        // 动态生成数据 得用事件委托
+        console.log($(this))
     })
 
+
 </script>
+
+<script>
+    // 监听下拉菜单
+   $(window).on('scroll', function () {
+            var s = $(window).scrollTop();
+            if (s > 100) {
+                console.log(s);
+            } else {
+               console.log("小于100")
+           }
+        })
+
+</script>
+
 
 <script>
     $(function () {

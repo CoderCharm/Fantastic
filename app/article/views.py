@@ -28,6 +28,11 @@ def detail_page(task_id):
 def author_page(author_id):
     return render_template('article/author.html')
 
+# 搜索页面
+@article.route('/search/', methods=['GET'])
+def search_info():
+    return render_template('article/search.html')
+
 
 # 后续功能
 # 登录注册页面

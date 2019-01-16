@@ -117,25 +117,10 @@
                     <div class="author-recommend-head">
                         <h2 class="author-recommend-name">热门账号</h2>
                     </div>
-                    <div class="author-recommend-list">
+                    <div class="author-recommend-list" id="popular">
 
 
-                        <div class="author-item zg-clear zm-profile-section-item zm-item">
-                            <div class="author-avatar">
-                                <a href="#" target="_blank">
-                                    <img class="Avatar Avatar--xs"
-                                         src="http://duweixin.oss-cn-beijing.aliyuncs.com/196a481fa741b2d4007169b6d6e8cf7a6c4a759e.jpg?x-oss-process=image/resize,p_50"
-                                         alt="丁香医生">
-                                </a>
-                            </div>
-                            <div class="author-item-content">
-                                <h3 class="author-item-title">
-                                    <a href="/a/186" target="_blank">
-                                        <strong>丁香医生</strong>
-                                    </a>
-                                </h3>
-                            </div>
-                        </div>
+
 
 
                     </div>
@@ -329,6 +314,37 @@
            }
         })
 
+    //热门账号
+     $.get('/api/v1/author/get/popular', (res) => {
+       var str = '<div class="author-item zg-clear zm-profile-section-item zm-item">'
+       $.each(res.data, function (index, element){
+           console.log(element)
+            str += '                            <div class="author-avatar">\n' +
+                '                                <a href= author/'+ element.author_id +'>\n' +
+                '                                    <img class="Avatar Avatar--xs"\n' +
+                '                                         src='+ element.author_img+'\n' +
+                '                                         />\n' +
+                '\n' +
+                '                                </a>\n' +
+                '                            </div>\n' +
+                '                            <div class="author-item-content">\n' +
+                '                                <h3 class="author-item-title">\n' +
+                '                                    <a href= author/'+element.author_id +' target="_blank">\n' +
+                '                                     <strong>'+ element.author+'</strong>\n' +
+                '                                    </a>\n' +
+                '                                </h3>\n' +
+                '                            </div>\n' +
+                '<br>'
+
+
+       });
+
+    $('#popular').append(str)
+
+
+    })
+
+
 </script>
 
 
@@ -336,6 +352,7 @@
     $(function () {
         loadMore('/api/v1/article/get/list ', (res) =>{
             const content = res.data.map(article => (
+
                 $(
                     `<li>
             <div class="img-box">

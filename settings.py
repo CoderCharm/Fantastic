@@ -7,9 +7,9 @@
 """
 # MySql DataBase setting file
 DATA_BASE = {
-    "user": "xxx",
-    "password": "xxx",
-    "host": "xxx",
+    "user": "bingbing",
+    "password": "123456",
+    "host": "39.105.119.228",
     "data_name": "fantastic",
 }
 

@@ -6,12 +6,13 @@
 api 接口文件  添加自定义红图
 """
 from flask import Blueprint
-from app.api.v1 import article, author,admin
+from app.api.v1 import article, author, admin, management
 
 
 def create_blueprint_v1():
-    bp_v1 = Blueprint('v1', __name__)
-    article.api.register(bp_v1)
-    author.api.register(bp_v1)
-    admin.api.register(bp_v1)
-    return bp_v1
+	bp_v1 = Blueprint('v1', __name__)
+	article.api.register(bp_v1)
+	author.api.register(bp_v1)
+	admin.api.register(bp_v1)
+	management.api.register(bp_v1)
+	return bp_v1

@@ -6,6 +6,7 @@ import click
 from flask import Flask
 from flasgger import Swagger
 from settings import DATA_BASE
+from flask_cors import CORS
 
 
 def config_mysql(app):
@@ -41,6 +42,7 @@ def create_app():
     #  https://stackoverflow.com/questions/46540664/no-application-found-either-work-inside-a-view-function-or-push-an-application
     db.init_app(app)
     Swagger(app)
+    CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
     return app
 
 

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Life is Fantastic</title>
+
+    <link rel="stylesheet" href='static/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="static/css/main.css">
+    <link rel="stylesheet" href="static/css/common.css">
+    <link rel="stylesheet" href="static/css/index.css">
+    <link rel="stylesheet" href="static/css/author.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+<div class="middlebar">
+    <div class="middlebar-inner clearfix">
+        <div class="bui-left logo-box">
+            <a href="/" class="logo-link">
+                <img src="static/img/logo.jpg" class="logo" style="width: 200px;height: 50px;">
+            </a>
+        </div>
+        <div class="search-wrapper fr">
+            <input type="text" placeholder="搜索文章" autocomplete="off" class="search-inner"
+                   value=""/>
+            <div class="search-btn">
+                <button type="button">
+                    <span>搜索</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<div class="container" id="new_content">
+    <div class="col-md-8 news">
+        <h1 class="title">{{ detail_info.title }}</h1>
+        <br>
+        <br>
+        <p class="info">
+            <span id="grad_read_count">阅读：{{ detail_info.grad_read_count }}</span> •
+            <span id="t_author"><a
+                    :href='"./author.html?author_id=" + detail_info.author_id'>{{ detail_info.author }}</a></span> •
+            <span id="t_time">{{ detail_info.t_time }}</span>
+            <span class="label label-default" id="cate">{{ detail_info.cate }}</span>
+
+        </p>
+        <br>
+        <br>
+        <div class="content" id="content" v-html="detail_info.nes_content">
+
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="y-right index-modules snb-right">
+
+            <div class="author-recommend">
+                <div class="author-recommend-head">
+                    <h2 class="author-recommend-name">Life is Fantastic</h2>
+                </div>
+                <div class="author-recommend-list">
+                    <a style="color: #8590A6" href="/about">一个帮你更好发现内容的地方</a>
+                </div>
+            </div>
+
+            <div class="author-recommend">
+                <div class="author-recommend-head">
+                    <h2 class="author-recommend-name">编辑精选</h2>
+                </div>
+                <div class="author-recommend-list">
+
+                    <ul class="news-list-right">
+
+                        <li v-for="(featured,index) in featureds">
+                                <div class="img-box">
+                                    <a :href='"./news.html?uuid=" + featured.md5_url' target="_blank">
+                                        <img :src="featured.cover" style="height: 60px; width: 80px;;">
+                                    </a>
+                                </div>
+                                <div class="txt-box">
+                                    <p class="p1">
+                                        <a :href='"./news.html?uuid=" + featured.md5_url' target="_blank">{{ featured.title
+                                            }}</a>
+                                    </p>
+                                    <div class="s-p">
+                                        <a class="account" target="_blank"
+                                           :href='"./author.html?author_id=" + featured.author_id'>{{ featured.author }}</a>
+                                        <span class="s2">{{ featured.published_at }}</span>
+                                    </div>
+                                </div>
+                            </li>
+
+                    </ul>
+                </div>
+            </div>
+
+
+            <!--<div class="author-recommend">-->
+            <!--<div class="author-recommend-head">-->
+            <!--<h2 class="author-recommend-name">更多</h2>-->
+            <!--</div>-->
+            <!--<div class="author-recommend-list">-->
+
+            <!--<div class="author-item zg-clear zm-profile-section-item zm-item">-->
+
+            <!--<div class="author-item-content recommend-more">-->
+            <!--<h3 class="author-item-title">-->
+            <!--<a href="/about">关于</a>-->
+
+            <!--</h3>-->
+            <!--</div>-->
+            <!--</div>-->
+
+            <!--</div>-->
+            <!--</div>-->
+
+        </div>
+
+    </div>
+</div>
+<div class="footer">
+    © 2018  Life is Fantastic 🙂
+</div>
+</body>
+<script src="http://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+<script src="static/js/main.js"></script>
+
+<script>
+    var hots_name = "http://127.0.0.1:8000";
+    new Vue({
+        el: "#new_content",
+        data: {
+            detail_info: [],
+            featureds: [],
+        },
+        methods: {
+            loadDetailArticle() {
+                var _this = this;
+                var detail_url = window.location.href;
+                var patt = detail_url.match(/[\s\S*?]uuid=([\w]+)/i);  // 正则匹配uuid
+                if (patt.length >= 2) {
+                    // == 两个等于号不知道为啥不行
+//                    console.log(patt[1]);
+                    axios.get(hots_name + "/api/v1/article/get/detail", {
+                        params: {
+                            uuid: patt[1],  // 匹配到的url
+                        }
+                    })
+                        .then(function (response) {
+
+                            _this.detail_info = response.data.data;
+
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+
+                } else {
+                    console.log("正则没有匹配到uuid...")
+                }
+            },
+            loadFeatured: function () {
+                    var _this = this;
+                    axios.get(hots_name + '/api/v1/article/featured')
+                        .then(function (response) {
+                            // 请求渲染精选
+                            _this.featureds = response.data.data
+
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                },        // 加载精选
+        },
+        mounted() {
+            this.loadDetailArticle();
+            this.loadFeatured();
+        }
+    })
+</script>
+</html>

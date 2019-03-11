@@ -19,7 +19,7 @@ def author_info():
     """查询作者详情页
         ---
         tags:
-          - Articles API
+          - Author API
         parameters:
           - name: page
             in: path

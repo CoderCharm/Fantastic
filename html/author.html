@@ -27,7 +27,7 @@
     <div class="middlebar">
         <div class="middlebar-inner clearfix">
             <div class="bui-left logo-box">
-               <a href="/" class="logo-link">
+                <a href="/" class="logo-link">
                     <img src="static/img/logo.jpg" class="logo">
                 </a>
             </div>
@@ -81,16 +81,17 @@
         </div>
         <div class="weui_msg_card_list" v-for="(info,index) in infos">
 
-            <div class="weui_msg_card" >
+            <div class="weui_msg_card">
                 <div class="weui_media_box appmsg">
                     <a class="weui_media_hd" :href='"./news.html?uuid=" + info.md5_url'
                        :style="{backgroundImage:'url('+info.cover+')'}"></a>
                     <div class="weui_media_bd">
                         <h4 class="weui_media_title">
                             <a :href='"./news.html?uuid=" + info.md5_url' target="_blank">{{ info.title }}</a>
-                        </h4>2
+                        </h4>
                         <p class="weui_media_desc">{{ info.digest }}</p>
-                        <p class="weui_media_extra_info">{{ info.published_at }}<span class="article-original">原创</span></p>
+                        <p class="weui_media_extra_info">{{ info.published_at }}<span class="article-original">原创</span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -98,11 +99,11 @@
 
         </div>
         <div class="loading ball-pulse" style="display: none;">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <span>加载中⋅⋅⋅</span>
-                </div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <span>加载中⋅⋅⋅</span>
+        </div>
     </div>
     <div class="right">
         <div class="statistics">
@@ -124,36 +125,36 @@
 
 
 </body>
-<script src="http://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+<!--<script src="http://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>-->
 <script src="static/js/main.js"></script>
 
 <script>
-    var hots_name = "http://127.0.0.1:8000";
+
     new Vue({
         el: "#wrapper",
         data: {
             author_info: [],
-            infos: [],
+            infos: []
         },
         methods: {
-            parseAuthor: function () {
+            parseAuthor() {
                 var _this = this;
                 var detail_url = window.location.href;
                 var patt = detail_url.match(/[\s\S*?]author_id=([\w]+)/i);  // 正则匹配uuid
                 if (patt.length >= 2) {
-//                    console.log(patt)
+                    console.log(patt);
                     _this.loadInfoList(1, patt[1])
                 } else {
                     console.log("正则没有匹配到author_id...")
                 }
             },  // 解析作者
-            loadInfoList: function (page, author_id) {
+            loadInfoList(page, author_id) {
                 var _this = this;
-                axios.get(hots_name + "/api/v1/author/get/list", {
+                axios.get(host_name + "/api/v1/author/get/list", {
                     params: {
                         page: page,
                         size: 10,
-                        author_id: author_id,
+                        author_id: author_id
                     }
                 })
                     .then(function (response) {
@@ -161,8 +162,11 @@
                             // 如果不是首页 数据 依次添加在后面
                             for (var i = 0; i < response.data.data.length; i++) {
                                 var info = response.data.data[i];
+                                console.log(info);
                                 _this.infos.push(info)
                             }
+//                            console.log("第一页数据渲染");
+
                         } else {
 //                                console.log(response);
                             _this.infos = response.data.data;

@@ -11,11 +11,11 @@
         Life is Fantastic
 
     </title>
-    <link rel="stylesheet" href="static/css/common.css">
-
-
-    <link rel="stylesheet" href="static/css/index.css">
-    <link rel="stylesheet" href="static/css/author.css">
+    <link rel="icon" type="image/x-icon" href="https://github.githubassets.com/favicon.ico">
+    
+    <link rel="stylesheet" href="./static/css/common.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="stylesheet" href="./static/css/author.css">
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -29,7 +29,7 @@
         <div class="middlebar-inner clearfix">
             <div class="bui-left logo-box">
                 <a href="/" class="logo-link">
-                    <img src="static/img/logo.jpg" class="logo">
+                    <img src="./static/img/logo.jpg" class="logo">
                 </a>
             </div>
             <div class="search-wrapper fr">
@@ -91,7 +91,7 @@
                             </div>
                             <div class="txt-box">
                                 <h3>
-                                    <a :href='"./news.html?uuid=" + info.md5_url'>{{ info.title }}</a>
+                                    <a :href='"./news.html?uuid=" + info.md5_url' target="_blank">{{ info.title }}</a>
                                 </h3>
                                 <p class="txt-info" target="_blank">
                                     {{ info.digest }}</p>
@@ -238,27 +238,27 @@
 </body>
 
 <script src="http://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
-<script src="static/js/main.js"></script>
+<script src="./static/js/main.js"></script>
 
 
 <script>
-    var hots_name = "http://127.0.0.1:8000";
+
     var current_cate = "0";
     var current_page = 1;
     new Vue(
         {
             el: "#wrapper",
             data: {
-                current: 0,
-                cates: [],
-                infos: [],
-                featureds: [],
-                hotAccount: [],
+                current: 0,  // 当前页码
+                cates: [],   // 分类
+                infos: [],   // 主要列表信息
+                featureds: [],  // 精选
+                hotAccount: [],  // 热门账号
             },
             methods: {
                 loadInfoList: function (page, cate) {
                     var _this = this;
-                    axios.get(hots_name + "/api/v1/article/get/list", {
+                    axios.get(host_name + "/api/v1/article/get/list", {
                         params: {
                             page: page,
                             size: 10,
@@ -282,7 +282,7 @@
                 },  // 加载数据
                 loadCate: function () {
                     var _this = this;
-                    axios.get(hots_name + '/api/v1/article/get/cate')
+                    axios.get(host_name + '/api/v1/article/get/cate')
                         .then(function (response) {
                             // 请求渲染分类
                             _this.cates = response.data.cate_list
@@ -294,7 +294,7 @@
                 },            // 加载分类
                 loadFeatured: function () {
                     var _this = this;
-                    axios.get(hots_name + '/api/v1/article/featured')
+                    axios.get(host_name + '/api/v1/article/featured')
                         .then(function (response) {
                             // 请求渲染精选
                             _this.featureds = response.data.data
@@ -332,7 +332,7 @@
                 },
                 loadHotAccount:function () {   // 加载热门账号
                     var _this = this;
-                    axios.get(hots_name + "/api/v1/author/get/popular", {
+                    axios.get(host_name + "/api/v1/author/get/popular", {
                         params: {
                             cate: current_cate,
                         }

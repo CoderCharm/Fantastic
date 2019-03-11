@@ -20,6 +20,8 @@ def config_mysql(app):
     host = DATA_BASE.get("host")
     data_name = DATA_BASE.get("data_name")
     app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql://{user}:{password}@{host}/{data_name}"
+    app.config['SQLALCHEMY_POOL_RECYCLE'] = 280   # 连接池
+    app.config['SQLALCHEMY_POOL_TIMEOUT'] = 20
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True  #
     app.config['SECRET_KEY'] = '75aec5b16f558c35478c8fac339e4dbd'
     # from app.models import db
@@ -46,11 +48,11 @@ def create_app():
     return app
 
 
-from manage import app   # Command-line use init db
+from manage import application   # Command-line use init db
 # TODO() don't move to the top.This will given error. and I don't know why?
 
 
-@app.cli.command()  # p594  Usage>flask initdb <--drop>
+@application.cli.command()  # p594  Usage>flask initdb <--drop>
 @click.option('--drop', is_flag=True, help='Create after drop.')
 def initdb(drop):
     from app.models import db

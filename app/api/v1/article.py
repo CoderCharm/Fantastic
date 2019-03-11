@@ -78,7 +78,7 @@ def get_article_list():
 
         data_list.append(tmp)
 
-    data = {"code": 200, "count": 564,
+    data = {"code": 200,
             "data": data_list,
             "cate": cate,
             "msg": "success",
@@ -138,9 +138,13 @@ def get_article_detail():
             examples:
 
     """
-    # 根据uid查询内容：标题，标签
+    # query title and content by uuid
     uuid = request.args.get('uuid')
-
+    if not uuid:
+        return jsonify({
+            "code": 404,
+            "data": None,
+        }), 404
     # query = database.session().query(models.A, models.B)
     # query = query.join(models.B, models.B.xx == models.A.xx).filter(models.a.xx == '20180615-20180621').filter(
     #     models.b.xx = 'haha')
@@ -148,22 +152,27 @@ def get_article_detail():
     info_res = db.session().query(FanTask, FanTaskCate.cate_name). \
         join(FanTaskCate, FanTask.t_cate == FanTaskCate.cate_id). \
         filter(FanTask.uuid == uuid).first()
-    # print(info_res)
+    if not info_res:
+        # not found any user info
+        return jsonify({
+            "code": 404,
+            "data": None,
+        }), 404
     src = {}
     fan_task_info = info_res.FanTask
     src['title'] = fan_task_info.t_title
     src['grad_read_count'] = fan_task_info.grad_read_count
-    # 作者
     src['author'] = fan_task_info.t_author
     src["author_id"] = fan_task_info.t_author_id
-    # 文章发布时间
     src['t_time'] = time.strftime("%Y-%m-%d", time.localtime(int(fan_task_info.t_time[:-3])))
     src["cate"] = info_res.cate_name
     info_news = FanTaskDetail.query.filter(FanTaskDetail.task_id == fan_task_info.task_id).first()
     src['nes_content'] = info_news.task_content
 
-    data = {"code": 200,
-            "data": src, }
+    data = {
+        "code": 200,
+        "data": src,
+    }
     return jsonify(data)
 
 

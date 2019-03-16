@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 # @Author: wg
 # @Time: 2018/12/24 10:32
-# @Desc: 
+# @Desc:
 """
 extensions file
 """

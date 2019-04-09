@@ -1,12 +1,36 @@
 # -*- coding:utf-8 -*-
-# @Author: wgPython
-# @Time: 2018/12/17 10:15
-# @Desc:
+# @Author: wg
+# @Time: 2019/3/16 14:52
+# @Desc: 
+"""
+
+"""
 import click
 from flask import Flask
-from flasgger import Swagger
-from settings import DATA_BASE
 from flask_cors import CORS
+
+from models import db
+from api.views import api
+from settings import DATA_BASE
+
+
+def create_app(config=None, testing=False, cli=False):
+    """Application factory, used to create application
+    """
+    app = Flask(__name__)
+
+    register_blueprints(app)
+    config_mysql(app)
+    db.init_app(app)
+
+    CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
+    return app
+
+
+def register_blueprints(app):
+    """register all blueprints for application
+        """
+    app.register_blueprint(api.blueprint)
 
 
 def config_mysql(app):
@@ -20,7 +44,7 @@ def config_mysql(app):
     host = DATA_BASE.get("host")
     data_name = DATA_BASE.get("data_name")
     app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql://{user}:{password}@{host}/{data_name}"
-    app.config['SQLALCHEMY_POOL_RECYCLE'] = 280   # 连接池
+    app.config['SQLALCHEMY_POOL_RECYCLE'] = 280  # 连接池
     app.config['SQLALCHEMY_POOL_TIMEOUT'] = 20
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = True  #
     app.config['SECRET_KEY'] = '75aec5b16f558c35478c8fac339e4dbd'
@@ -29,33 +53,16 @@ def config_mysql(app):
     # db.init_app(app)
 
 
-def create_app():
-    app = Flask(__name__)  # create flask app obj
-    app.debug = True  # debug model
-    # Register Blueprint
-    from app.article import article as article_blueprint  # import blueprint
-    app.register_blueprint(article_blueprint)
-    from app.api.v1 import create_blueprint_v1  # import my define RedPrint
-    app.register_blueprint(create_blueprint_v1(), url_prefix='/api/v1')
-    config_mysql(app)  # init db setting
-    app.app_context().push()  # https://blog.csdn.net/zhongqiushen/article/details/79162792
-    from app.models import db
-    # with app.app_context():
-    #  https://stackoverflow.com/questions/46540664/no-application-found-either-work-inside-a-view-function-or-push-an-application
-    db.init_app(app)
-    Swagger(app)
-    CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
-    return app
+from manage import application  # Command-line use init db
 
 
-from manage import application   # Command-line use init db
 # TODO() don't move to the top.This will given error. and I don't know why?
 
 
 @application.cli.command()  # p594  Usage>flask initdb <--drop>
 @click.option('--drop', is_flag=True, help='Create after drop.')
 def initdb(drop):
-    from app.models import db
+    from models import db
     if drop:  # drop databases tables
         click.confirm("This operation will delete databases, do you want to continue?", abort=True)
         db.drop_all()

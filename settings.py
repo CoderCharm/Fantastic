@@ -5,19 +5,12 @@
 """
 配置文件
 """
-# MySql DataBase setting file
-# DATA_BASE = {
-#     "user": "bingbing",
-#     "password": "123456",
-#     "host": "39.105.119.228",
-#     "data_name": "fantastic",
-# }
 
 # local xampp test DataBase setting file
 DATA_BASE = {
     "user": "root",
-    "password": "wg709803",
-    "host": "120.78.140.76",
+    "password": "",
+    "host": "localhost",
     "data_name": "fantastic",
 }
 

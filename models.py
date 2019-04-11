@@ -3,31 +3,26 @@
 # @Time: 2019/3/16 15:11
 # @Desc: 
 """
-
-"""
-# -*- coding:utf-8 -*-
-# @Author: wg
-# @Time: 2018/12/21 11:54
-# @Desc:
-"""
 ORM创建数据库
 不使用外键关系
 """
-import uuid
 import time
 
 from extensions import db
 
 
 class BaseModel(object):
-    """模型基类，为每个模型补充创建时间与更新时间"""
+    """
+    模型基类，为每个模型补充创建时间与更新时间
+    """
     create_time = db.Column(db.String(64), index=True, default=int(time.time() * 1000))  # index给定索引
     update_time = db.Column(db.String(64), default=int(time.time() * 1000))  # 记录的更新时间
 
 
 class FanChannel(BaseModel, db.Model):
-    """文章来源库"""
-    # __tablename__ = "fan_channel"  指定名称
+    """
+    文章来源库
+    """
     channel_id = db.Column(db.Integer, primary_key=True)  # 主键ID
     channel_name = db.Column(db.String(50))  # 平台名称
     channel_status = db.Column(db.Boolean, default=True)  # 开启状态 默认开启
@@ -40,8 +35,9 @@ class FanChannel(BaseModel, db.Model):
 
 
 class FanTaskCate(BaseModel, db.Model):
-    """文章分类表"""
-    # __tablename__ = "fan_task_cate"
+    """
+    文章分类表
+    """
     cate_id = db.Column(db.Integer, primary_key=True)
     cate_name = db.Column(db.String(16), nullable=False)  # 分类名
     cate_status = db.Column(db.Boolean, default=True)  # 开启状态 默认开启
@@ -54,8 +50,9 @@ class FanTaskCate(BaseModel, db.Model):
 
 
 class FanTask(BaseModel, db.Model):
-    """文章列表"""
-    # __tablename__ = "fan_task"
+    """
+    文章列表
+    """
     task_id = db.Column(db.Integer, primary_key=True)
     uuid = db.Column(db.String(64), unique=True)
     t_author = db.Column(db.String(256))  # 原文作者
@@ -93,8 +90,9 @@ class FanTask(BaseModel, db.Model):
 
 
 class FanTaskDetail(BaseModel, db.Model):
-    """文章详情表"""
-    # __tablename__ = "fan_task_detail"
+    """
+    文章详情表
+    """
     task_id = db.Column(db.Integer, nullable=False, primary_key=True)  # 文章id
     task_content = db.Column(db.Text, nullable=False)  # 文章内容
     task_comment = db.Column(db.Text)  # 文章评论区预留
@@ -104,11 +102,37 @@ class FanTaskDetail(BaseModel, db.Model):
 
 
 class FanTaskAuthor(BaseModel, db.Model):
-    '''作者表'''
-    __tablename__ = "fan_autor"  # 指定名称
+    """
+    作者表
+    """
     t_author = db.Column(db.String(256))  # 原文作者
     t_author_id = db.Column(db.String(64), primary_key=True)  # 作者id
     channel_id = db.Column(db.Integer)  # 作者来源id
 
     def __init__(self, **kwargs):
         super(FanTaskAuthor, self).__init__(**kwargs)
+
+
+class FanUser(BaseModel, db.Model):
+    """
+    用户表
+    """
+    f_uid = db.Column(db.String(64), primary_key=True)   # 用户ID
+    f_name = db.Column(db.String(128), nullable=False)   # 用户名
+    f_password = db.Column(db.String(64), nullable=False)  # 密码 MD5
+    f_role = db.Column(db.Integer)     # 用户角色级别 存储角色id
+    f_email = db.Column(db.String(64))   # 邮箱用于找回密码
+
+    def __init__(self, **kwargs):
+        super(FanUser, self).__init__(**kwargs)
+
+
+class FanRole(db.Model):
+    """
+    后台角色表
+    """
+    f_role_id = db.Column(db.String(64), primary_key=True)   # 角色id
+    f_role_name = db.Column(db.String(128), nullable=False)  # 角色名称 如管理员  普通用户
+
+    def __init__(self, **kwargs):
+        super(FanRole, self).__init__(**kwargs)

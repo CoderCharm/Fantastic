@@ -12,23 +12,21 @@ from flask_restful import Resource
 from models import FanTask
 
 
-class ArticleResource(Resource):
-    """Single object resource
+class Demo(Resource):
     """
-
+    测试
+    """
     def get(self, item_id):
-        return {"ArticleList": 1}
-        # print(user_id)
+        data = {
+            "ID": item_id
+        }
+        return data
 
-    def post(self, item_id):
-        return {"ArticleResource_post": item_id}
 
-
-class ArticleList(Resource):
+class List(Resource):
     """
-    查询文章列表
+    文章列表操作
     """
-
     def get(self):
         # 实现分页查询的功能 page 页数 size 一页显示的数据 cate 分类查询
         page = request.args.get('page', 1, type=int)
@@ -74,3 +72,35 @@ class ArticleList(Resource):
 
     def post(self):
         return {"ArticleList": "post"}
+
+
+class Cate(Resource):
+    """
+    文章分类操作
+    """
+    def get(self):
+        """
+        获取文章分类
+        :return:
+        """
+        return {
+            "cate_list": [
+                {
+                    "cate_id": 0,
+                    "cate_name": "推荐"
+                },
+                {
+                    "cate_id": 1,
+                    "cate_name": "搞笑"
+                },
+                {
+                    "cate_id": 2,
+                    "cate_name": "科技"
+                },
+                {
+                    "cate_id": 3,
+                    "cate_name": "励志"
+                }
+            ],
+            "code": 200
+        }

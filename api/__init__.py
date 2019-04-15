@@ -8,10 +8,10 @@
 import click
 
 from flask import Flask
-from flask_cors import CORS
+from extensions import CORS
 
 from config import config
-from models import db
+from api.models.admin import db
 from api.views import api
 
 

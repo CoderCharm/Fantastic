@@ -7,9 +7,9 @@
 """
 import time
 from flask import request
-from flask_restful import Resource
+from extensions import Resource
 
-from models import FanTask
+from api.models.admin import FanTask
 
 
 class Demo(Resource):

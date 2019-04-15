@@ -9,7 +9,7 @@ import time
 
 import os
 from flask import request
-from flask_restful import Resource
+from extensions import Resource
 
 
 class UpLoad(Resource):
@@ -19,14 +19,15 @@ class UpLoad(Resource):
         :return:
         """
         # 文件夹名称 通过当前时间
+
         current_dir = time.strftime("%Y%m%d", time.localtime())
-        if not os.path.exists(f"./static/{current_dir}"):
-            os.mkdir(f"./static/{current_dir}")
+        if not os.path.exists(f"./api/static/{current_dir}"):
+            os.mkdir(f"./api/static/{current_dir}")
 
         res = request.files["wangEditorH5File"]
         file_name = str(int(time.time() * 1000)) + str(res.filename)
 
-        with open(f"./static/{current_dir}/{file_name}", "wb") as f:
+        with open(f"./api/static/{current_dir}/{file_name}", "wb") as f:
             f.write(res.read())
 
         return {"data": [f"http://127.0.0.1:8000/static/{current_dir}/{file_name}"]}

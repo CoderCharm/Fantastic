@@ -6,7 +6,7 @@
 用户相关操作
 """
 from flask import request
-from flask_restful import Resource
+from extensions import Resource
 
 
 class Login(Resource):

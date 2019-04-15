@@ -19,7 +19,7 @@ hyperlink==18.0.0
 idna==2.8
 incremental==17.5.0
 itsdangerous==1.1.0
-Jinja2==2.10
+Jinja2==2.10.1
 jsonschema==3.0.1
 lxml==4.3.2
 MarkupSafe==1.1.1
@@ -27,6 +27,7 @@ mistune==0.8.4
 mysqlclient==1.4.2.post1
 parsel==1.5.1
 pika==0.13.1
+Pillow==6.0.0
 pyasn1==0.4.5
 pyasn1-modules==0.2.4
 pycparser==2.19

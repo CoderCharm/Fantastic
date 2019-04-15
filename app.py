@@ -24,9 +24,9 @@ def create_app(config=None, testing=False, cli=False):
     """
     app = Flask(__name__)
 
-    register_blueprints(app)   # 注册蓝图
-    config_mysql(app)          # 配置数据库
-    db.init_app(app)           # 初始化app
+    register_blueprints(app)  # 注册蓝图
+    config_mysql(app)  # 配置数据库
+    db.init_app(app)  # 初始化app
 
     # 跨域
     CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)

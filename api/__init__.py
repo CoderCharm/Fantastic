@@ -52,7 +52,7 @@ from manage import application  # Command-line use init db
 @application.cli.command()  # p594  Usage>flask initdb <--drop>
 @click.option('--drop', is_flag=True, help='Create after drop.')
 def initdb(drop):
-    from models import db
+    from .models.admin import db
     if drop:  # drop databases tables
         click.confirm("This operation will delete databases, do you want to continue?", abort=True)
         db.drop_all()

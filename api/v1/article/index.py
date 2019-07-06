@@ -23,7 +23,7 @@ class Demo(Resource):
         return data
 
 
-class List(Resource):
+class ArticleList(Resource):
     """
     文章列表操作
     """
@@ -74,7 +74,7 @@ class List(Resource):
         return {"ArticleList": "post"}
 
 
-class Cate(Resource):
+class ArticleCate(Resource):
     """
     文章分类操作
     """

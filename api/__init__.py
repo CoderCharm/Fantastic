@@ -12,7 +12,7 @@ from extensions import CORS
 
 from config import config
 from api.models.admin import db
-from api.views import api
+from api.v1_views import api as api_v1
 
 
 def create_app(config_name):
@@ -42,20 +42,19 @@ def register_blueprints(app):
     :param app:
     :return:
     """
-    app.register_blueprint(api.blueprint)
+    app.register_blueprint(api_v1.blueprint)
 
 
-from manage import application  # Command-line use init db
-
-
-# don't move to the top.This will given error.
-@application.cli.command()  # p594  Usage>flask initdb <--drop>
-@click.option('--drop', is_flag=True, help='Create after drop.')
-def initdb(drop):
-    from .models.admin import db
-    if drop:  # drop databases tables
-        click.confirm("This operation will delete databases, do you want to continue?", abort=True)
-        db.drop_all()
-        click.echo("Drop Tables")
-    db.create_all()  # initialized DataBases
-    click.echo("Initialized DataBases.")
+# from manage import application  # Command-line use init db
+#
+#
+# @application.cli.command()  # p594  Usage>flask initdb <--drop>
+# @click.option('--drop', is_flag=True, help='Create after drop.')
+# def initdb(drop):
+#     from .models.admin import db
+#     if drop:  # drop databases tables
+#         click.confirm("This operation will delete databases, do you want to continue?", abort=True)
+#         db.drop_all()
+#         click.echo("Drop Tables")
+#     db.create_all()  # initialized DataBases
+#     click.echo("Initialized DataBases.")

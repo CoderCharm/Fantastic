@@ -12,6 +12,7 @@ flask-cors = "*"
 flask-restful = "*"
 pymysql = "*"
 flask-wtf = "*"
+flask-restful-swagger = "*"
 
 [requires]
 python_version = "3.6"

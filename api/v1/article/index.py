@@ -9,7 +9,7 @@ import time
 from flask import request
 from extensions import Resource
 
-from api.models.admin import FanTask
+from api.models.article import FanTask
 
 
 class Demo(Resource):

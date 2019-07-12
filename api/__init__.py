@@ -5,13 +5,11 @@
 """
 
 """
-import click
-
 from flask import Flask
-from extensions import CORS
+from extensions import CORS, db
 
 from config import config
-from api.models.admin import db
+# from api.models.admin import db
 from api.v1_views import api as api_v1
 
 
@@ -45,16 +43,3 @@ def register_blueprints(app):
     app.register_blueprint(api_v1.blueprint)
 
 
-# from manage import application  # Command-line use init db
-#
-#
-# @application.cli.command()  # p594  Usage>flask initdb <--drop>
-# @click.option('--drop', is_flag=True, help='Create after drop.')
-# def initdb(drop):
-#     from .models.admin import db
-#     if drop:  # drop databases tables
-#         click.confirm("This operation will delete databases, do you want to continue?", abort=True)
-#         db.drop_all()
-#         click.echo("Drop Tables")
-#     db.create_all()  # initialized DataBases
-#     click.echo("Initialized DataBases.")

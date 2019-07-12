@@ -20,9 +20,9 @@ class Config(object):
 
 
 class MySQLConfig(object):
-    MYSQL_USERNAME = 'root'
-    MYSQL_PASSWORD = '#python709913WGspider!@#$%'
-    MYSQL_HOST = '106.12.24.154'
+    MYSQL_USERNAME = 'your username'
+    MYSQL_PASSWORD = 'your password'
+    MYSQL_HOST = 'your host'
 
 
 class DevelopmentConfig(Config):

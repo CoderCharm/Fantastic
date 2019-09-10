@@ -26,13 +26,6 @@ class FanRole(db.Model, BaseModel):
     def __init__(self, **kwargs):
         super(FanRole, self).__init__(**kwargs)
 
-    @staticmethod
-    def create_role():
-        for name in ['普通用户', '管理员']:
-            role = FanRole(f_role_name=name)
-            db.session.add(role)
-        db.session.commit()
-
 
 class FanUser(db.Model, BaseModel):
     """

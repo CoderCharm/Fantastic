@@ -66,8 +66,10 @@ class AuthUser(Resource):
             refresh_token = user.generate_auth_token(expiration=604800)  # 刷新token  # 60*60*24*7
             return {
                 "code": 200,
-                "Authentication": authentication,
-                "RefreshToken": refresh_token,
+                "token": {
+                    "authentication": authentication,
+                    "refresh_token": refresh_token,
+                }
             }
         else:
             return {

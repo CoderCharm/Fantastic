@@ -1,6 +1,6 @@
 [[source]]
 name = "pypi"
-url = "https://pypi.org/simple"
+url = "https://pypi.doubanio.com/simple/"
 verify_ssl = true
 
 [dev-packages]
@@ -13,6 +13,11 @@ flask-restful = "*"
 pymysql = "*"
 flask-wtf = "*"
 flask-restful-swagger = "*"
+flask-socketio = "*"
+eventlet = "*"
+greenlet = "*"
+python-dotenv = "*"
+requests-html = "*"
 
 [requires]
 python_version = "3.6"

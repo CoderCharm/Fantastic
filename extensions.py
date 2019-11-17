@@ -10,9 +10,10 @@ from flask_sqlalchemy import SQLAlchemy
 # from flask_socketio import SocketIO
 from flask_restful import Resource
 from flask_restful_swagger import swagger
-
+from flask_apscheduler import APScheduler
 
 db = SQLAlchemy()
 # socketio = SocketIO()
+scheduler = APScheduler()
 
-__all__ = ['db', 'CORS', 'Resource', 'swagger']
+__all__ = ['db', 'CORS', 'Resource', 'swagger', 'scheduler']

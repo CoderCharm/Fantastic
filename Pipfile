@@ -18,6 +18,7 @@ eventlet = "*"
 greenlet = "*"
 python-dotenv = "*"
 requests-html = "*"
+flask-apscheduler = "*"
 
 [requires]
 python_version = "3.6"

@@ -26,7 +26,8 @@ api_v1 = swagger.docs(api_v1, apiVersion='0.1')
 api_v1.add_resource(AuthUser, '/user/auth')
 
 # article operation
-api_v1.add_resource(Demo, '/article/<int:item_id>')
+api_v1.add_resource(Demo, '/demo/<int:item_id>',
+                    '/demo')
 api_v1.add_resource(ArticleList, '/article/get/list')
 api_v1.add_resource(ArticleCate, '/article/get/cate')
 

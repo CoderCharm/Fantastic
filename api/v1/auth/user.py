@@ -5,7 +5,7 @@
 """
 用户相关操作
 """
-from flask import request
+from flask import request, current_app
 
 from extensions import Resource, swagger
 from api.models.user import FanUser
@@ -13,7 +13,8 @@ from api.models.user import FanUser
 
 class AuthUser(Resource):
     def get(self):
-        request.get_json("")
+        current_app.logger.info("测试日志")
+
         return {'code': 123}
 
     @swagger.operation(

@@ -6,27 +6,39 @@
 
 """
 import time
-from flask import request
+from flask import request, current_app
 from extensions import Resource
 
 from api.models.article import FanTask
+from flask_restful import marshal_with
+from utils.serialize import resp_200_fields
+
+
+def test_task():
+    print(11111)
 
 
 class Demo(Resource):
     """
     测试
     """
+
+    @marshal_with(resp_200_fields)
     def get(self, item_id):
-        data = {
-            "ID": item_id
-        }
-        return data
+        current_app.apscheduler.add_job(func=test_task, id="test-task", trigger="interval", seconds=2)
+        return {"data": item_id}
+
+    def post(self):
+        task_info = request.values.get("task_info")
+        print(task_info, type(task_info))
+        return {"data": task_info}
 
 
 class ArticleList(Resource):
     """
     文章列表操作
     """
+
     def get(self):
         # 实现分页查询的功能 page 页数 size 一页显示的数据 cate 分类查询
         page = request.args.get('page', 1, type=int)
@@ -78,6 +90,7 @@ class ArticleCate(Resource):
     """
     文章分类操作
     """
+
     def get(self):
         """
         获取文章分类
